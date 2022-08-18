@@ -1,5 +1,6 @@
 {
   "name": "test-solid-start",
+  "license": "APACHE",
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",
