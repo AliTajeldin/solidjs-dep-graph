@@ -22,10 +22,10 @@ export default function Basic() {
   });
 
   const nodes: Node[] = [
-    new Node("1", "Node 1a"),
-    new Node("2", "Node 2b"),
+    new Node("1", "Node 1a long name blah blah blah"),
+    new Node("2", "2"),
     new Node("3", "Node 3"),
-    new Node("4", "Node 4"),
+    new Node("4", "N4"),
     new Node("5", "Node 5"),
     new Node("6", "Node 6"),
   ];

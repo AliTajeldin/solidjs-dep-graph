@@ -15,7 +15,7 @@ export class Node {
     this.meta = meta;
     this.x = 0;
     this.y = 0;
-    this.width = 60;
+    this.width = 20 + 5.5 * this.label.length;
     this.height = 25;
   }
 
@@ -33,7 +33,7 @@ export class Node {
       <rect x={xoff} y={yoff} width={this.width} height={this.height}
         class="fill-graph-1"/> 
       <text dominant-baseline="middle" text-anchor="middle"
-        class="stroke-secondary">
+        class="stroke-secondary text-xs font-thin">
         {this.label}</text>
      </g>
   }
