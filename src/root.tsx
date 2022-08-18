@@ -24,12 +24,14 @@ export default function Root() {
       <Body class="bg-slate-800">
         <Suspense>
           <ErrorBoundary>
-            <a class="mr-2 bg-red-500" href="/">
-              Home
-            </a>
-            <a class="mr-2 bg-yellow-300" href="/about">
-              About
-            </a>
+            <div class="mb-1">
+              <a class="rounded-full bg-indigo-500 hover:bg-indigo-800 px-2 py-1 text-xs font-bold mr-2" href="/">
+                Basic
+              </a>
+              <a class="rounded-full bg-indigo-500 hover:bg-indigo-800 px-2 py-1 text-xs font-bold mr-2" href="/custom">
+                Custom
+              </a>
+            </div>
             <Routes>
               <FileRoutes />
             </Routes>
