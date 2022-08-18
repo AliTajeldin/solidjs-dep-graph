@@ -21,14 +21,14 @@ export default function Root() {
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Body class="bg-slate-800">
+      <Body class="bg-primary-bg">
         <Suspense>
           <ErrorBoundary>
-            <div class="mb-1">
-              <a class="rounded-full bg-indigo-500 hover:bg-indigo-800 px-2 py-1 text-xs font-bold mr-2" href="/">
+            <div class="mt-1 mb-2 mx-2 ">
+              <a class="btn mr-2" href="/">
                 Basic
               </a>
-              <a class="rounded-full bg-indigo-500 hover:bg-indigo-800 px-2 py-1 text-xs font-bold mr-2" href="/custom">
+              <a class="btn mr-2" href="/custom">
                 Custom
               </a>
             </div>

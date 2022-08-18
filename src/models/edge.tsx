@@ -17,7 +17,7 @@ export class Edge {
     const move=`M ${this.points[0].x},${this.points[0].y}`;
     const lines=this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
-    return <g class="fill-transparent stroke-blue-600">
+    return <g class="fill-transparent stroke-pink-200">
       <path d={`${move} ${lines}`}/>
      </g>
   }

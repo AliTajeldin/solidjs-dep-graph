@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply rounded-full border-2 border-primary hover:bg-secondary-bg px-2 py-1 text-xs font-bold text-primary;
+}
