@@ -1,6 +1,6 @@
-
 import { JSXElement } from "solid-js";
 
+//TODO: add meta param similar to Node! // blah
 export class Edge {
   readonly from : string;
   readonly to : string;

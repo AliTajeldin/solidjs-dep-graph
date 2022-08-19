@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors')
 
+// TODO: research using colors from Radix site.
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
