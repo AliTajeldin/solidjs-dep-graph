@@ -27,7 +27,7 @@ export default function Basic() {
   
   return (
     <main>
-      <svg class="border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
+      <svg class="ml-5 border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
         preserveAspectRatio="none" >
           {graph.render()}
       </svg>

@@ -1,4 +1,4 @@
-import { JSXElement } from "solid-js";
+import { JSXElement, onMount } from "solid-js";
 
 export class Node {
   readonly id : string;
@@ -26,11 +26,20 @@ export class Node {
   // TODO: add hover tool tip with extra info.
 
   render() : JSXElement {
+    let rRef;
     const xoff = -this.width / 2;
     const yoff = -this.height / 2;
 
-    return <g class="fill-transparent hover:fill-secondary-bg stroke-white" transform={`translate(${this.x} ${this.y})`}>
-      <rect x={xoff} y={yoff} width={this.width} height={this.height}
+    onMount(() => {
+      console.log("added node click listener");
+      
+      rRef.addEventListener("click", (evt) => {
+        console.log("node click", evt);
+      });
+    })
+
+    return <g ref={rRef} pointer-events="all" class="fill-transparent hover:fill-secondary-bg stroke-white" transform={`translate(${this.x} ${this.y})`}>
+      <rect  x={xoff} y={yoff} width={this.width} height={this.height}
         class="fill-graph-1"/> 
       <text dominant-baseline="middle" text-anchor="middle"
         class="stroke-secondary text-xs font-thin">
