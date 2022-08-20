@@ -1,8 +1,6 @@
-import { graphlib, layout } from "dagre";
-import { createEffect, For, onMount } from "solid-js";
-import { Node } from "../models/node";
-import { Edge } from "../models/edge";
-import { Graph } from "../models/graph";
+import { Node } from "~/models/node";
+import { Edge } from "~/models/edge";
+import { Graph } from "~/models/graph";
 
 export default function Basic() {
   const nodes: Node[] = [

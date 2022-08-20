@@ -31,8 +31,6 @@ export class Node {
     const yoff = -this.height / 2;
 
     onMount(() => {
-      console.log("added node click listener");
-      
       rRef.addEventListener("click", (evt) => {
         console.log("node click", evt);
       });
