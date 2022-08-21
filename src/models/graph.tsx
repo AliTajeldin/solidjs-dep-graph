@@ -1,5 +1,5 @@
 import { graphlib, layout } from "dagre";
-import { createEffect, createSignal, For, JSX, onMount } from "solid-js";
+import { createSignal, For, JSX } from "solid-js";
 import { Node } from "../models/node";
 import { Edge } from "../models/edge";
 import { renderDebugMsg, showMouseEvent } from "~/components/debug-msg";
@@ -101,14 +101,18 @@ export class Graph {
       yOffset: panZoom.yOffset + evt.movementY,
     });
     evt.preventDefault();
+    evt.stopImmediatePropagation();
   }
 
-render() {
+  // renders the nodes and edges of the graph.
+  // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
+  // without such rect, svg will only get pointer events on painted nodes/edges.
+  // FIXME: remove renderDebugMsg on graph
+  render() {
     return (
       <svg pointer-events="visible"
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
       >
-        {/* bg rect to accept pointer events (propagates to parent svg) */}
         <rect class="pointer-target fill-transparent" width="100%" height="100%" />
         <g pointer-events="none"
           transform={`matrix(${getPanZoom().scale} 0 0 ${getPanZoom().scale} ${getPanZoom().xOffset} ${getPanZoom().yOffset})`}>
@@ -120,7 +124,6 @@ render() {
           </For>
         </g>
         {renderDebugMsg()}
-
       </svg>
     );
   }

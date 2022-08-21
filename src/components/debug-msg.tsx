@@ -1,6 +1,7 @@
 import { createSignal, JSX, JSXElement } from "solid-js";
 import { Portal } from "solid-js/web";
 
+// TODO: rewrite using use: directive (https://www.solidjs.com/tutorial/bindings_directives)
 /**
  * Show a debug message in the upper right corner.
  * Very handy for debugging events.  Couple of ways to use this:

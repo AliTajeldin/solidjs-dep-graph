@@ -21,11 +21,11 @@ export default function Basic() {
 
   const graph = new Graph(nodes, edges);
   graph.layout()
-  graph.dump();
+  // graph.dump();
   
   return (
     <main>
-      <svg class="ml-5 border-2 border-primary" width={graph.getWidth()*2} height={2*graph.getHeight()}
+      <svg class="ml-5 border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
         preserveAspectRatio="none" >
           {graph.render()}
       </svg>
