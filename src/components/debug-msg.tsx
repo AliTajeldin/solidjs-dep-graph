@@ -1,4 +1,4 @@
-import { createSignal, JSXElement } from "solid-js";
+import { createSignal, JSX, JSXElement } from "solid-js";
 import { Portal } from "solid-js/web";
 
 /**
@@ -23,11 +23,12 @@ export function renderDebugMsg() {
   );
 }
 
-export function watchMouseMove(elem: any) {
+/**
+ * should be called as handler for mousemove (e.g. <elem onmousemove={showMouseEvent})
+ */
+export const showMouseEvent : JSX.EventHandler<HTMLOrSVGElement, MouseEvent> = (e) => {
   if (!debugMsgRendered) {
     console.error("must render debug msg div first!");
   }
-  elem.addEventListener("mousemove", (e) => {
-    setDebugMsg(`offset(${e.offsetX},${e.offsetY})`);
-  });
+  setDebugMsg(`offset(${e.offsetX},${e.offsetY})`);
 }

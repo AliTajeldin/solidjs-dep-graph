@@ -2,7 +2,7 @@ import { graphlib, layout } from "dagre";
 import { createEffect, createSignal, For, JSX, onMount } from "solid-js";
 import { Node } from "../models/node";
 import { Edge } from "../models/edge";
-import { renderDebugMsg, setDebugMsg, watchMouseMove } from "~/components/debug-msg";
+import { renderDebugMsg, showMouseEvent } from "~/components/debug-msg";
 
 export interface LayoutOptions {
   rankdir?: string,
@@ -19,7 +19,7 @@ interface InternalLayoutOptions extends LayoutOptions {
 };
 
 // TODO: make this part of the Graph instance (so multiple graphs can have own scale)
-const [ getPanZoom, setPanZoom ] = createSignal({
+const [getPanZoom, setPanZoom] = createSignal({
   scale: 1,
   xOffset: 0,
   yOffset: 0,
@@ -63,54 +63,55 @@ export class Graph {
     layout(graph);
   }
 
-  render() {
-    let svgRef;
-    onMount(() => {
-      watchMouseMove(svgRef);
+  private handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {
+    evt.preventDefault();
 
-      // TODO: look into using .onmousemove attr instead of event listner
-      svgRef.addEventListener("wheel", (evt) => {
-        evt.preventDefault();
-        console.log('evt =', evt);
-        console.log('svg bounding box =', svgRef.getBoundingClientRect());
-        
-        const panZoom = getPanZoom();
-        const deltaY = evt.deltaY;
-        const normDeltaY =  deltaY > 0 ?
-          1 - Math.min(deltaY, 200) / 400 :
-          (1 + -deltaY / 300);
-        // const newScale = Math.min(10, Math.max(0.25, normDeltaY * panZoom.scale))
-        const newScale = 2 * panZoom.scale;
-        setDebugMsg(`scale = ${newScale}`);
-        setPanZoom({
-          scale: newScale,
-          xOffset: panZoom.xOffset,
-          yOffset: panZoom.yOffset,
-        });
-      });
+    // scale the mouse move event to get reasonable smooth zoom rate
+    const panZoom = getPanZoom();
+    const deltaY = evt.deltaY;
+    const normDeltaY = deltaY > 0 ?
+      1 - Math.min(deltaY, 200) / 400 :
+      (1 + -deltaY / 300);
+    const newScale = Math.min(10, Math.max(0.25, normDeltaY * panZoom.scale))
+
+    // adjust offset so pointer is in same spot on graph after zoom
+    const offsetScale = -1.0 * newScale / panZoom.scale;
+    const newXOffset = evt.offsetX + offsetScale * (-panZoom.xOffset + evt.offsetX);
+    const newYOffset = evt.offsetY + offsetScale * (-panZoom.yOffset + evt.offsetY);
+
+    setPanZoom({
+      scale: newScale,
+      xOffset: newXOffset,
+      yOffset: newYOffset,
     });
+  };
 
-    // FIXME: should do pan by button down/up so only handle move when button is down.
-    // FIXME: if above is implemented than we can fix offset at end to remove pan drift.
-    const handleMouseMove : JSX.EventHandler<SVGElement, MouseEvent>= (evt) => {
-      // only do pan when mouse moves while only button 1 is pressed
-      if (evt.buttons != 1) return;
+  // FIXME: should do pan by button down/up so only handle move when button is down.
+  // FIXME: if above is implemented than we can fix offset at end to remove pan drift.
+  private handleMouseMove: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
+    // FIXME: remove showMouseEvent
+    showMouseEvent(evt);
+    // only do pan when mouse moves while only button 1 is pressed
+    if (evt.buttons != 1) return;
 
-      const panZoom = getPanZoom();
-      setPanZoom({
-        scale: panZoom.scale,
-        xOffset: panZoom.xOffset + evt.movementX,
-        yOffset: panZoom.yOffset + evt.movementY,
-      });
-      evt.preventDefault();
-    }
+    const panZoom = getPanZoom();
+    setPanZoom({
+      scale: panZoom.scale,
+      xOffset: panZoom.xOffset + evt.movementX,
+      yOffset: panZoom.yOffset + evt.movementY,
+    });
+    evt.preventDefault();
+  }
 
+render() {
     return (
-      <svg ref={svgRef} pointer-events="visible" onMouseMove={handleMouseMove}>
+      <svg pointer-events="visible"
+        onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
+      >
         {/* bg rect to accept pointer events (propagates to parent svg) */}
-        <rect class="pointer-target fill-transparent" width="100%" height="100%"/>
+        <rect class="pointer-target fill-transparent" width="100%" height="100%" />
         <g pointer-events="none"
-        transform={`matrix(${getPanZoom().scale} 0 0 ${getPanZoom().scale} ${getPanZoom().xOffset} ${getPanZoom().yOffset})`}>
+          transform={`matrix(${getPanZoom().scale} 0 0 ${getPanZoom().scale} ${getPanZoom().xOffset} ${getPanZoom().yOffset})`}>
           <For each={this.nodes}>
             {(n) => n.render()}
           </For>
