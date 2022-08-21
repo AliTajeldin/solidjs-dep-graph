@@ -1,5 +1,5 @@
 import { graphlib, layout } from "dagre";
-import { createSignal, For, JSX } from "solid-js";
+import { Accessor, createSignal, For, JSX, Setter } from "solid-js";
 import { Node } from "../models/node";
 import { Edge } from "../models/edge";
 import { renderDebugMsg, showMouseEvent } from "~/components/debug-msg";
@@ -12,41 +12,44 @@ export interface LayoutOptions {
   nodesep?: number,
 };
 
+const DEFAULT_LAYOUT_OPTIONS :  LayoutOptions = {
+  marginx: 10,
+  marginy: 10,
+  rankdir: 'LR',
+  ranksep: 30,
+  nodesep: 20,
+};
+
 // add width, height as they are added during layout by Dagre
 interface InternalLayoutOptions extends LayoutOptions {
   width?: number,
   height?: number,
 };
 
-// TODO: make this part of the Graph instance (so multiple graphs can have own scale)
-const [getPanZoom, setPanZoom] = createSignal({
-  scale: 1,
-  xOffset: 0,
-  yOffset: 0,
-});
+interface PanZoom {
+  scale: number,
+  xOffset: number,
+  yOffset: number,
+};
 
-
-// TODO: add resize handler window.onResize and get innnerHeight/Width of enclosing window!
-// TODO: scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
-// TODO: use store instead of individual signals.
-// FIXME: disable highlight of node text on double click
 export class Graph {
   nodes: Node[];
   edges: Edge[];
   layoutOptions: InternalLayoutOptions;
+  readonly getPanZoom : Accessor<PanZoom>;
+  readonly setPanZoom : Setter<PanZoom>;
 
-  constructor(nodes: Node[] = [], edges: Edge[] = []) {
+  constructor(nodes: Node[] = [], edges: Edge[] = [], userLayoutOptions: LayoutOptions = {}) {
     this.nodes = nodes;
     this.edges = edges;
 
-    // TODO: accept as an option override
-    this.layoutOptions = {
-      marginx: 15,
-      marginy: 15,
-      rankdir: 'LR',
-      ranksep: 55,
-      nodesep: 35,
-    };
+    this.layoutOptions = Object.assign({}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions);
+
+    [this.getPanZoom, this.setPanZoom] = createSignal({
+      scale: 1,
+      xOffset: 0,
+      yOffset: 0,
+    });
   }
 
   getWidth() { return this.layoutOptions.width }
@@ -67,7 +70,7 @@ export class Graph {
     evt.preventDefault();
 
     // scale the mouse move event to get reasonable smooth zoom rate
-    const panZoom = getPanZoom();
+    const panZoom = this.getPanZoom();
     const deltaY = evt.deltaY;
     const normDeltaY = deltaY > 0 ?
       1 - Math.min(deltaY, 200) / 400 :
@@ -79,23 +82,20 @@ export class Graph {
     const newXOffset = evt.offsetX + offsetScale * (-panZoom.xOffset + evt.offsetX);
     const newYOffset = evt.offsetY + offsetScale * (-panZoom.yOffset + evt.offsetY);
 
-    setPanZoom({
+    this.setPanZoom({
       scale: newScale,
       xOffset: newXOffset,
       yOffset: newYOffset,
     });
   };
 
-  // FIXME: should do pan by button down/up so only handle move when button is down.
-  // FIXME: if above is implemented than we can fix offset at end to remove pan drift.
   private handleMouseMove: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
-    // FIXME: remove showMouseEvent
     showMouseEvent(evt);
     // only do pan when mouse moves while only button 1 is pressed
     if (evt.buttons != 1) return;
 
-    const panZoom = getPanZoom();
-    setPanZoom({
+    const panZoom = this.getPanZoom();
+    this.setPanZoom({
       scale: panZoom.scale,
       xOffset: panZoom.xOffset + evt.movementX,
       yOffset: panZoom.yOffset + evt.movementY,
@@ -107,15 +107,15 @@ export class Graph {
   // renders the nodes and edges of the graph.
   // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
   // without such rect, svg will only get pointer events on painted nodes/edges.
-  // FIXME: remove renderDebugMsg on graph
   render() {
+    const pz = this.getPanZoom;
     return (
       <svg pointer-events="visible"
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
       >
         <rect class="pointer-target fill-transparent" width="100%" height="100%" />
         <g pointer-events="none"
-          transform={`matrix(${getPanZoom().scale} 0 0 ${getPanZoom().scale} ${getPanZoom().xOffset} ${getPanZoom().yOffset})`}>
+          transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
           <For each={this.nodes}>
             {(n) => n.render()}
           </For>

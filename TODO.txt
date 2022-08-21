@@ -1,0 +1,4 @@
+// TODO: add resize handler window.onResize and get innnerHeight/Width of enclosing window!
+// TODO: scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
+// FIXME: disable highlight of node text on double click
+// FIXME: should do pan by button down/up so only handle move when button is down.
