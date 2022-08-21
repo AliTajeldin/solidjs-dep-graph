@@ -7,7 +7,7 @@ export default function Basic() {
     new Node("1", "Node "),
     new Node("2", "2"),
     new Node("3", "Node 3"),
-    new Node("4", "N4"),
+    new Node("4", "N4", {shape: { fill:"red"}, label: { stroke:"yellow"}}),
     new Node("5", "Node 5"),
     new Node("6", "Node 6"),
   ];
