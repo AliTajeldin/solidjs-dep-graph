@@ -42,7 +42,7 @@ export class Node {
   }
 
   renderShape() {
-    const shape = Factory.instance.getShape("rect");
+    const shape = Factory.instance.getShape(this.nodeOptions.shape);
     return shape.doRender(this.width, this.height, this.nodeOptions.shapeStyle);
   }
 

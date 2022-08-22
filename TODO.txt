@@ -7,4 +7,5 @@
 * Node/Edge add style override for both shape and label
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
+* add shape to point intercept function and use that for start/end points of edge.
 
