@@ -1,12 +1,16 @@
-import { createSignal, JSX, JSXElement, onMount } from "solid-js";
+import { JSX, JSXElement } from "solid-js";
 import { defaultsDeep } from 'lodash-es';
+import { Factory  } from "./factory";
+import { LabelStyle, ShapeStyle } from "./types";
 
 export interface NodeOptions {
-  shapeStyle?: Record<string, any>;
-  labelStyle?: Record<string, any>;
+  shape?: string;
+  shapeStyle?: ShapeStyle;
+  labelStyle?: LabelStyle;
 };
 
 const defaultNodeOptions : NodeOptions = {
+  shape: "rect",
   shapeStyle: {},
   labelStyle: {},
 }
@@ -38,13 +42,8 @@ export class Node {
   }
 
   renderShape() {
-    const xoff = -this.width / 2;
-    const yoff = -this.height / 2;
-
-    return (
-      <rect x={xoff} y={yoff} width={this.width} height={this.height} rx="5"
-        class="fill-graph-1 stroke-primary" style={this.nodeOptions.shapeStyle} />
-    );
+    const shape = Factory.instance.getShape("rect");
+    return shape.doRender(this.width, this.height, this.nodeOptions.shapeStyle);
   }
 
   renderLabel() {

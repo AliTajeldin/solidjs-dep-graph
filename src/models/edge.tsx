@@ -1,14 +1,16 @@
 import { JSXElement } from "solid-js";
 import { defaultsDeep } from "lodash-es";
+import { EdgeStyle } from "./types";
 
 export interface EdgeOptions {
-  edgeStyle?: Record<string, any>;
+  edgeStyle?: EdgeStyle;
 };
 
 const defaultEdgeOptions : EdgeOptions = {
   edgeStyle: {},
 }
 
+// TODO: define Point and Size types.
 export class Edge {
   readonly from : string;
   readonly to : string;

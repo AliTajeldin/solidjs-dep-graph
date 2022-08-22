@@ -131,6 +131,6 @@ export class Graph {
   dump() {
     console.log("Layout =", this.layoutOptions);
     this.nodes.forEach(n => console.log(`Node(${n.id}) = `, n));
-    this.edges.forEach(e => console.log(`Edge(${e.label}) = `, e));
+    this.edges.forEach(e => console.log(`Edge(${e.from}, ${e.to}) = `, e));
   }
 }
