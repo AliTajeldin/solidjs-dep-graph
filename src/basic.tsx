@@ -4,9 +4,9 @@ import { Graph } from "./graph";
 
 export default function Basic() {
   const nodes: Node[] = [
-    new Node("1", "Node 1 Long Name"),
+    new Node("1", "Node 1 zzz"),
     new Node("2", "2", {shape: "circle"}),
-    new Node("3", "Node 3"),
+    new Node("3", "Node 3", {shape: "diamond"}),
     new Node("4", "N4", {shapeStyle: { fill:"red"}, labelStyle: { stroke:"yellow"}}),
     new Node("5", "Node 5"),
     new Node("6", "Node 6"),
