@@ -1,6 +1,6 @@
-import { Node } from "~/models/node";
-import { Edge } from "~/models/edge";
-import { Graph } from "~/models/graph";
+import { Node } from "./node";
+import { Edge } from "./edge";
+import { Graph } from "./graph";
 
 export default function Basic() {
   const nodes: Node[] = [
@@ -24,11 +24,9 @@ export default function Basic() {
   // graph.dump();
   
   return (
-    <main>
-      <svg class="ml-5 border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
-        preserveAspectRatio="none" >
-          {graph.render()}
-      </svg>
-    </main>
+    <svg class="mt-5 ml-5 border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
+      preserveAspectRatio="none" >
+        {graph.render()}
+    </svg>
   );
 }

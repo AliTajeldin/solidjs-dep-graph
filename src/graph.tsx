@@ -1,8 +1,8 @@
 import { graphlib, layout } from "dagre";
 import { Accessor, createSignal, For, JSX, Setter } from "solid-js";
-import { Node } from "../models/node";
-import { Edge } from "../models/edge";
-import { renderDebugMsg, showMouseEvent } from "~/components/debug-msg";
+import { Node } from "./node";
+import { Edge } from "./edge";
+import { renderDebugMsg, showMouseEvent } from "./debug-msg";
 
 export interface LayoutOptions {
   rankdir?: string,
