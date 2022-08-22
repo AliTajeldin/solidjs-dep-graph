@@ -4,19 +4,19 @@ import { Graph } from "~/models/graph";
 
 export default function Basic() {
   const nodes: Node[] = [
-    new Node("1", "Node "),
+    new Node("1", "Node 1 Long Name"),
     new Node("2", "2"),
     new Node("3", "Node 3"),
-    new Node("4", "N4", {shape: { fill:"red"}, label: { stroke:"yellow"}}),
+    new Node("4", "N4", {shapeStyle: { fill:"red"}, labelStyle: { stroke:"yellow"}}),
     new Node("5", "Node 5"),
     new Node("6", "Node 6"),
   ];
   const edges: Edge[] = [
-    new Edge("1", "2", "E1"),
-    new Edge("2", "3", "E2"),
-    new Edge("2", "4", "E3"),
-    new Edge("1", "5", "E4"),
-    new Edge("1", "6", "E5"),
+    new Edge("1", "2", ),
+    new Edge("2", "3", ),
+    new Edge("2", "4", ),
+    new Edge("1", "5", ),
+    new Edge("1", "6", {edgeStyle: {stroke:"yellow"}}),
   ];
 
   const graph = new Graph(nodes, edges);

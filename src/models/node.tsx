@@ -1,9 +1,15 @@
 import { createSignal, JSX, JSXElement, onMount } from "solid-js";
+import { defaultsDeep } from 'lodash-es';
 
-export interface NodeStyle {
-  shape?: Record<string, any>;
-  label?: Record<string, any>;
+export interface NodeOptions {
+  shapeStyle?: Record<string, any>;
+  labelStyle?: Record<string, any>;
 };
+
+const defaultNodeOptions : NodeOptions = {
+  shapeStyle: {},
+  labelStyle: {},
+}
 
 export class Node {
   readonly id: string;
@@ -14,9 +20,9 @@ export class Node {
   width: number;
   height: number;
 
-  nodeStyle: NodeStyle;
+  nodeOptions: NodeOptions;
 
-  constructor(id: string, label: string, nodeStyle: NodeStyle = {} ) {
+  constructor(id: string, label: string, nodeOptions: NodeOptions = {} ) {
     this.id = id;
     this.label = label;
 
@@ -24,7 +30,7 @@ export class Node {
     this.y = 0;
     [this.width, this.height] = this.computeSize();
 
-    this.nodeStyle = Object.assign({}, {shape:{}, label:{}}, nodeStyle);
+    this.nodeOptions = defaultsDeep({}, nodeOptions, defaultNodeOptions);
   }
 
   computeSize() {
@@ -37,7 +43,7 @@ export class Node {
 
     return (
       <rect x={xoff} y={yoff} width={this.width} height={this.height} rx="5"
-        class="fill-graph-1 stroke-primary" style={this.nodeStyle.shape} />
+        class="fill-graph-1 stroke-primary" style={this.nodeOptions.shapeStyle} />
     );
   }
 
@@ -45,7 +51,7 @@ export class Node {
     return (
       <text dominant-baseline="middle" text-anchor="middle"
         class="stroke-secondary text-xs font-thin select-none"
-        style={this.nodeStyle.label}
+        style={this.nodeOptions.labelStyle}
       > {this.label} </text>
     );
   }
