@@ -1,5 +1,7 @@
 {
     "files.associations": {
         "*.css": "tailwindcss"
-    }
+    },
+    "browse-lite.chromeExecutable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "browse-lite.startUrl": "http://localhost:4000"
 }

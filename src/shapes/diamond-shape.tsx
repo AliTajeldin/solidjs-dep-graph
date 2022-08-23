@@ -1,7 +1,7 @@
 import { Shape, ShapeStyle } from "../types";
 
 export class DiamondShape implements Shape {
-  doRender(width: number, height: number, style: ShapeStyle) {
+  render(width: number, height: number, style: ShapeStyle) {
     const xoff = 5 + width / 2;
     const yoff = 5 + height / 2;
 

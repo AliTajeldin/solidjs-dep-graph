@@ -12,7 +12,7 @@ export interface LayoutOptions {
   nodesep?: number,
 };
 
-const DEFAULT_LAYOUT_OPTIONS :  LayoutOptions = {
+const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
   marginx: 10,
   marginy: 10,
   rankdir: 'LR',
@@ -36,8 +36,8 @@ export class Graph {
   nodes: Node[];
   edges: Edge[];
   layoutOptions: InternalLayoutOptions;
-  readonly getPanZoom : Accessor<PanZoom>;
-  readonly setPanZoom : Setter<PanZoom>;
+  readonly getPanZoom: Accessor<PanZoom>;
+  readonly setPanZoom: Setter<PanZoom>;
 
   constructor(nodes: Node[] = [], edges: Edge[] = [], userLayoutOptions: LayoutOptions = {}) {
     this.nodes = nodes;
@@ -55,15 +55,34 @@ export class Graph {
   getWidth() { return this.layoutOptions.width }
   getHeight() { return this.layoutOptions.height }
 
+  // TODO: extract this into own DagreLayout class, when we add ElkLayout later :-)
   layout() {
     const graph = new graphlib.Graph();
     graph.setGraph(this.layoutOptions);
+    // TODO: is this needed??
     graph.setDefaultEdgeLabel(() => { return {} });
 
-    this.nodes.forEach((n) => graph.setNode(n.id, n));
+    const nodeMap: Record<string, Node> = {};
+    this.nodes.forEach((n) => {
+      graph.setNode(n.id, n);
+      nodeMap[n.id] = n;
+    });
     this.edges.forEach((e) => graph.setEdge(e.from, e.to, e));
 
     layout(graph);
+
+    // adjust edges so first/last points move to intersection point with the to/from node.
+    this.edges.forEach((e) => {
+      const fromNode = nodeMap[e.from];
+      const toNode = nodeMap[e.to];
+      const lastIdx = e.points.length - 1;
+      if (lastIdx < 2) {
+        throw new Error(`too few edge points to go on Edge(${e.from},${e.to})`)
+      }
+
+      e.points[0] = fromNode.intersect(e.points[1]);
+      e.points[lastIdx] = toNode.intersect(e.points[lastIdx-1]);
+    });
   }
 
   private handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {
@@ -116,7 +135,7 @@ export class Graph {
         <rect class="pointer-target fill-transparent" width="100%" height="100%" />
         <g pointer-events="none"
           transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
-          <For each={this.nodes}>
+          <For each={Array.from(this.nodes.values())}>
             {(n) => n.render()}
           </For>
           <For each={this.edges}>
@@ -130,7 +149,7 @@ export class Graph {
 
   dump() {
     console.log("Layout =", this.layoutOptions);
-    this.nodes.forEach(n => console.log(`Node(${n.id}) = `, n));
+    this.nodes.forEach((n, id) => console.log(`Node(${id}) = `, n));
     this.edges.forEach(e => console.log(`Edge(${e.from}, ${e.to}) = `, e));
   }
 }

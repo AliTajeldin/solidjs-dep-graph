@@ -10,7 +10,6 @@ const defaultEdgeOptions : EdgeOptions = {
   edgeStyle: {},
 }
 
-// TODO: define Point and Size types.
 export class Edge {
   readonly from : string;
   readonly to : string;

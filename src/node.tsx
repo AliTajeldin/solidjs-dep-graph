@@ -1,7 +1,7 @@
 import { JSX, JSXElement } from "solid-js";
 import { defaultsDeep } from 'lodash-es';
-import { Factory  } from "./factory";
-import { LabelStyle, ShapeStyle } from "./types";
+import { Factory } from "./factory";
+import { LabelStyle, Point, ShapeStyle } from "./types";
 
 export interface NodeOptions {
   shape?: string;
@@ -9,7 +9,7 @@ export interface NodeOptions {
   labelStyle?: LabelStyle;
 };
 
-const defaultNodeOptions : NodeOptions = {
+const defaultNodeOptions: NodeOptions = {
   shape: "rect",
   shapeStyle: {},
   labelStyle: {},
@@ -26,7 +26,7 @@ export class Node {
 
   nodeOptions: NodeOptions;
 
-  constructor(id: string, label: string, nodeOptions: NodeOptions = {} ) {
+  constructor(id: string, label: string, nodeOptions: NodeOptions = {}) {
     this.id = id;
     this.label = label;
 
@@ -43,7 +43,7 @@ export class Node {
 
   renderShape() {
     const shape = Factory.instance.getShape(this.nodeOptions.shape);
-    return shape.doRender(this.width, this.height, this.nodeOptions.shapeStyle);
+    return shape.render(this.width, this.height, this.nodeOptions.shapeStyle);
   }
 
   renderLabel() {
@@ -57,6 +57,12 @@ export class Node {
 
   private handleDblClick: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
     console.log("node double click", evt);
+  }
+
+  // determine where given point intersects (enters) this node.
+  // point and return point are both in graph coordinates.
+  intersect(point: Point): Point {
+    return new Point(this.x, this.y);
   }
 
   render(): JSXElement {

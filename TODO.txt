@@ -8,4 +8,5 @@
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
 * add shape to point intercept function and use that for start/end points of edge.
-
+* add arrows, circles, etc to end of edge.
+* add support for multi-directional ("to" [default], "from", "both" for arrow type)
