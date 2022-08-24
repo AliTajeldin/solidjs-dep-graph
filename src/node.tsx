@@ -2,6 +2,7 @@ import { JSX, JSXElement } from "solid-js";
 import { defaultsDeep } from 'lodash-es';
 import { Factory } from "./factory";
 import { LabelStyle, Point, ShapeStyle } from "./types";
+import { Shapes, Intersection } from "kld-intersections";
 
 export interface NodeOptions {
   shape?: string;
@@ -61,7 +62,17 @@ export class Node {
 
   // determine where given point intersects (enters) this node.
   // point and return point are both in graph coordinates.
+  // while shapeInfo and intersects are using shape coordinates (origin 0,0)
   intersect(point: Point): Point {
+    const shape = Factory.instance.getShape(this.nodeOptions.shape);
+    const nodeShape = shape.shapeInfo(this.width, this.height);
+    const lineShape = Shapes.line(point.x - this.x, point.y - this.y, 0, 0);
+
+    const inter = Intersection.intersect(lineShape, nodeShape);
+
+    if (inter.points.length > 0) {
+      return new Point(inter.points[0].x + this.x, inter.points[0].y + this.y);
+    }
     return new Point(this.x, this.y);
   }
 

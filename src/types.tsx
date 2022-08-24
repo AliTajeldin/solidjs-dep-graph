@@ -7,7 +7,7 @@ export type EdgeStyle = Record<string, any>;
 
 export interface Shape {
   render(width: number, height: number, style: ShapeStyle) : JSXElement;
-  // shapeInfo(width: number, height: number) : ShapeInfo;
+  shapeInfo(width: number, height: number) : ShapeInfo;
 };
 
 export class Point {
