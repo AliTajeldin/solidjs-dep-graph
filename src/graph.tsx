@@ -123,30 +123,6 @@ export class Graph {
     evt.stopImmediatePropagation();
   }
 
-  Markers() {
-    return <defs>
-      <marker
-        id="arrow"
-        viewBox="0 0 10 10"
-        refX="9"
-        refY="5"
-        markerUnits="strokeWidth"
-        markerWidth="8"
-        markerHeight="6"
-        orient="auto-start-reverse"
-      >
-        <path class="stroke-pink-200 fill-pink-200"
-          d="M 0 0 L 10 5 L 0 10 z"
-          style={{
-            strokeWidth: 1,
-            strokeDasharray: '1, 0',
-          }}
-        ></path>
-      </marker>
-
-    </defs>
-  }
-
   // renders the nodes and edges of the graph.
   // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
   // without such rect, svg will only get pointer events on painted nodes/edges.
@@ -157,7 +133,6 @@ export class Graph {
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
       >
         <rect class="pointer-target fill-transparent" width="100%" height="100%" />
-        {this.Markers()}
         <g pointer-events="none"
           transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
           <For each={Array.from(this.nodes.values())}>

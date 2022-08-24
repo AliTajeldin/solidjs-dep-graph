@@ -16,7 +16,7 @@ export default function Basic() {
     new Edge("2", "3", ),
     new Edge("2", "4", ),
     new Edge("1", "5", ),
-    new Edge("1", "6", {edgeStyle: {stroke:"red"}}),
+    new Edge("1", "6", {edgeStyle: {stroke:"red"}, markerStyle: { stroke: "yellow", fill: "green"}}),
   ];
 
   const graph = new Graph(nodes, edges);
