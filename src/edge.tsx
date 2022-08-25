@@ -1,15 +1,16 @@
-import { JSXElement } from "solid-js";
+import { JSXElement, Show } from "solid-js";
 import { defaultsDeep } from "lodash-es";
 import { EdgeStyle, MarkerStyle } from "./types";
-import { ArrowMarker } from "./markers/arrow-marker";
-import { CircleMarker } from "./markers/circle-marker";
+import { Factory } from "./factory";
 
 export interface EdgeOptions {
-  edgeStyle?: EdgeStyle;
-  markerStyle?: MarkerStyle;
+  endMarkerType?: string,
+  edgeStyle?: EdgeStyle,
+  markerStyle?: MarkerStyle,
 };
 
 const defaultEdgeOptions: EdgeOptions = {
+  endMarkerType: "arrow",
   edgeStyle: {},
   markerStyle: {},
 }
@@ -31,16 +32,18 @@ export class Edge {
   }
 
   render(): JSXElement {
+    const Marker = Factory.instance.getMarker(this.edgeOptions.endMarkerType);
     const markerId = `sdg-marker-${this.id}`;
     const move = `M ${this.points[0].x},${this.points[0].y}`;
     const lines = this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
     return <g class="fill-transparent stroke-graph-edge" style={this.edgeOptions.edgeStyle}>
       <path d={`${move} ${lines}`} marker-end={`url(#${markerId}`} />
-      <defs>
-        <CircleMarker id={markerId} markerStyle={{}}/>
-      </defs>
+      <Show when={Marker !== null}>
+        <defs>
+          <Marker id={markerId} markerStyle={{}}/>
+        </defs>
+      </Show>
     </g>
   }
-
 }

@@ -14,8 +14,8 @@ export default function Basic() {
   const edges: Edge[] = [
     new Edge("1", "2", ),
     new Edge("2", "3", ),
-    new Edge("2", "4", ),
-    new Edge("1", "5", ),
+    new Edge("2", "4", {endMarkerType: "none"}),
+    new Edge("1", "5", {endMarkerType: "circle"}),
     new Edge("1", "6", {edgeStyle: {stroke:"red"}, markerStyle: { stroke: "yellow", fill: "green"}}),
   ];
 
