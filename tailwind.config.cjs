@@ -16,6 +16,7 @@ module.exports = {
         "graph-2" : "#CCB8C1",
         "graph-3" : "#8D9FC6",
         "graph-4" : "#E1C5DC",
+        "graph-edge" : colors.pink[200],
 
         // pallete from https://www.schemecolor.com/beached-tones-design.php
         "champagnep-pink" : "#F4E0D5",

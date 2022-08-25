@@ -4,6 +4,7 @@ import { ShapeInfo } from "kld-intersections";
 export type ShapeStyle = Record<string, any>;
 export type LabelStyle = Record<string, any>;
 export type EdgeStyle = Record<string, any>;
+export type MarkerStyle = Record<string, any>;
 
 export interface Shape {
   render(width: number, height: number, style: ShapeStyle) : JSXElement;
