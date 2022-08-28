@@ -16,8 +16,10 @@ const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
   marginx: 10,
   marginy: 10,
   rankdir: 'LR',
-  ranksep: 30,
-  nodesep: 20,
+  ranksep: 50,
+  nodesep: 30,
+  // ranksep: 30,
+  // nodesep: 20,
 };
 
 // add width, height as they are added during layout by Dagre

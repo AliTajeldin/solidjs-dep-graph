@@ -8,7 +8,8 @@ export default defineConfig({
     hmr: true,
   },
   build: {
+    minify: false,
     target: 'esnext',
-    sourcemap: true,
+    sourcemap: false,
   },
 });

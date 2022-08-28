@@ -1,12 +1,10 @@
+* create separate example/lib directory and config vite to build a library
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
+   OR, use @solid-primitives/resize-observer for a solidjs specific answer.
 * scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
-* disable highlight of node text on double click
 * should do pan by button down/up so only handle move when button is down.
 * Node add a get width() getter that calls computeWidth() that would lazy eval
    the computed width based on input params
-* Node/Edge add style override for both shape and label
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
-* add shape to point intercept function and use that for start/end points of edge.
-* add arrows, circles, etc to end of edge.
 * add support for multi-directional ("to" [default], "from", "both" for arrow type)
