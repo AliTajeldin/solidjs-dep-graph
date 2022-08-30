@@ -8,7 +8,7 @@ export class RectShape implements Shape {
 
     return (
       <rect x={xoff} y={yoff} width={width} height={height} rx="5"
-        class="fill-graph-1 stroke-primary" style={style} />
+        class="fill-yellow-200 stroke-primary" style={style} />
     );
   }
 

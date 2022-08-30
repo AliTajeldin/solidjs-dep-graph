@@ -1,6 +1,6 @@
-import { Node } from "./node";
-import { Edge } from "./edge";
-import { Graph } from "./graph";
+import { Node } from "solidjs-dep-graph";
+import { Edge } from "solidjs-dep-graph";
+import { Graph } from "solidjs-dep-graph";
 
 export default function Basic() {
   const nodes: Node[] = [

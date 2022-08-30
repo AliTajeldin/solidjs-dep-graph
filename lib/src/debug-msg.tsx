@@ -18,7 +18,7 @@ export function renderDebugMsg() {
   return (
     <Portal>
     <div class="fixed top-0 right-0 text-cyan-300 bg-black pr-1 pt-1 min-w-[100px] min-h-[25px]">
-      <p>{debugMsg()}</p>
+      <p style={{stroke: "yellow"}}>{debugMsg()}</p>
     </div>
     </Portal>
   );

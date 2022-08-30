@@ -4,30 +4,11 @@
   "description": "dependency graphs in solidjs",
   "license": "APACHE",
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
-    "tn": "ts-node -O '{\"module\": \"commonjs\"}'"
-  },
-  "type": "module",
-  "devDependencies": {
-    "@types/dagre": "^0.7.47",
-    "@types/graphlib": "^2.1.8",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.6.2",
-    "vite": "^3.0.4",
-    "vite-plugin-solid": "^2.3.0"
-  },
-  "dependencies": {
-    "@radix-ui/colors": "^0.1.8",
-    "dagre": "^0.8.5",
-    "kld-intersections": "^0.7.0",
-    "lodash-es": "^4.17.21",
-    "solid-js": "1.4.7"
+    "start": "xxvite",
+    "dev": "xxvite",
+    "build": "pnpm --filter ./lib build",
+    "serve": "xxvite preview",
+    "clobber": "rm -rf node_modules dist && pnpm run -r clobber"
   },
   "engines": {
     "node": ">=14"
