@@ -134,7 +134,7 @@ export class Graph {
       <svg pointer-events="visible"
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
       >
-        <rect class="pointer-target fill-transparent" width="100%" height="100%" />
+        <rect class="pointer-target" width="100%" height="100%" style="fill: transparent"/>
         <g pointer-events="none"
           transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
           <For each={Array.from(this.nodes.values())}>

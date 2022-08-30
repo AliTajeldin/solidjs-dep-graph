@@ -4,10 +4,9 @@
   "description": "dependency graphs in solidjs",
   "license": "APACHE",
   "scripts": {
-    "start": "xxvite",
-    "dev": "xxvite",
-    "build": "pnpm --filter ./lib build",
-    "serve": "xxvite preview",
+    "dev": "cd ./demo && pnpm dev",
+    "build": "cd ./lib && pnpm build",
+    "preview": "cd ./demo && pnpm preview",
     "clobber": "rm -rf node_modules dist && pnpm run -r clobber"
   },
   "engines": {

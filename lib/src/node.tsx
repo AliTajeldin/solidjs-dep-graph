@@ -51,7 +51,12 @@ export class Node {
     return (
       <text dominant-baseline="middle" text-anchor="middle"
         class="stroke-secondary text-xs font-thin select-none"
-        style={this.nodeOptions.labelStyle}
+        style={{
+          "font-size": "0.75rem",
+          "font-weight": 100,
+          "line-height": "1rem",
+          "stroke": "white",
+          ...this.nodeOptions.labelStyle}}
       > {this.label} </text>
     );
   }

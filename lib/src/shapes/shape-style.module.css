@@ -1,0 +1,9 @@
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/indigo.css";
+
+.graph_node_1 {
+  /* fill: #F4E0D5; */
+  fill: var(--indigo9);
+  stroke: #a5b4fc;
+}
+

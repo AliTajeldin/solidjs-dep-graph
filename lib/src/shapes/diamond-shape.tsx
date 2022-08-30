@@ -1,5 +1,6 @@
 import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
+import c from './shape-style.module.css';
 
 
 export class DiamondShape implements Shape {
@@ -12,7 +13,7 @@ export class DiamondShape implements Shape {
 
   render(width: number, height: number, style: ShapeStyle) {
     return (
-      <path class="fill-graph-1 stroke-primary" style={style}
+      <path class={c.graph_node_1} style={style}
         d={this.pathString(width, height)} />
     );
   }

@@ -24,7 +24,8 @@ export default function Basic() {
   // graph.dump();
   
   return (
-    <svg class="mt-5 ml-5 border-2 border-primary" width={graph.getWidth()} height={graph.getHeight()}
+    <svg class="thedude" width={graph.getWidth()} height={graph.getHeight()}
+        style="margin-top: 20px; margin-left: 20px; border: 2px solid green"
       preserveAspectRatio="none" >
         {graph.render()}
     </svg>

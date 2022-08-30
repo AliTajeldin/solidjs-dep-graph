@@ -22,7 +22,7 @@ export class Edge {
   readonly edgeOptions: EdgeOptions;
   points?: { x: number, y: number }[];
 
-  static seq : number = 0;
+  static seq: number = 0;
 
   constructor(from: string, to: string, options: EdgeOptions = {}) {
     this.id = Edge.seq++;
@@ -37,11 +37,15 @@ export class Edge {
     const move = `M ${this.points[0].x},${this.points[0].y}`;
     const lines = this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
-    return <g class="fill-transparent stroke-graph-edge" style={this.edgeOptions.edgeStyle}>
+    return <g style={{
+      fill: "transparent",
+      stroke: "red",
+      ...this.edgeOptions.edgeStyle,
+    }}>
       <path d={`${move} ${lines}`} marker-end={`url(#${markerId}`} />
       <Show when={Marker !== null}>
         <defs>
-          <Marker id={markerId} markerStyle={{}}/>
+          <Marker id={markerId} markerStyle={{}} />
         </defs>
       </Show>
     </g>
