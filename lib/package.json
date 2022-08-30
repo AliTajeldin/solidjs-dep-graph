@@ -27,7 +27,6 @@
     "vite-plugin-solid": "^2.3.0"
   },
   "dependencies": {
-    "@radix-ui/colors": "^0.1.8",
     "dagre": "^0.8.5",
     "kld-intersections": "^0.7.0",
     "lodash-es": "^4.17.21",

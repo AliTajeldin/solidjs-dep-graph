@@ -1,6 +1,6 @@
 import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
-import c from './shape-style.module.css';
+import colors from '../styles/colors';
 
 export class CircleShape implements Shape {
   private radius(width: number, height: number) {
@@ -11,8 +11,11 @@ export class CircleShape implements Shape {
     const r = this.radius(width, height);
 
     return (
-      <circle cx={0} cy={0} r={r}
-      class={c.graph_node_1} style={style} />
+      <circle cx={0} cy={0} r={r} style={{
+        fill: colors.nodeBG,
+        stroke: colors.nodeBorder,
+        ...style
+      }}/>
     );
   }
 
