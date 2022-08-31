@@ -46,3 +46,6 @@ function App() {
 The above would produce the following graph.
 
 ![Basic Example Image](./docs/img/basic_example.png)
+
+# Documentation
+* [Detailed `Graph` options](./docs/graph.md)
