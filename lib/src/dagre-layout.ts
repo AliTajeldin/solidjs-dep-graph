@@ -23,7 +23,8 @@ export function dagreLayout(
   userLayoutOptions: LayoutOptions
 ): Size {
 
-  const layoutOptions: InternalLayoutOptions = Object.assign({}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions);
+  const layoutOptions: InternalLayoutOptions = Object.assign(
+    {}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions ? userLayoutOptions : {});
   const graph = new graphlib.Graph();
   graph.setGraph(layoutOptions);
   // TODO: is this needed??

@@ -20,5 +20,3 @@ export function ArrowMarker(props: MarkerProps) {
     </marker>
   );
 }
-
-const x = ArrowMarker;

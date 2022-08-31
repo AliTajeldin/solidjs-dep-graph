@@ -1,5 +1,4 @@
 import { Node, Edge, Graph } from "solidjs-dep-graph";
-import c from './style.module.css';
 
 export default function Basic() {
   const nodes: Node[] = [
@@ -36,11 +35,9 @@ export default function Basic() {
     new Edge("1", "6",),
   ];
 
-  const graph = new Graph(nodes, edges);
-
   return (
     <div style="margin: 30px">
-      {graph.render()}
+      <Graph nodes={nodes} edges={edges}/>
     </div>
   );
 }
