@@ -9,8 +9,8 @@ export function ArrowMarker(props: MarkerProps) {
       refX="9"
       refY="5"
       markerUnits="strokeWidth"
-      markerWidth="8"
-      markerHeight="6"
+      markerWidth="6"
+      markerHeight="4"
       orient="auto-start-reverse"
     >
       <path d="M 0 0 L 10 5 L 0 10 z" style={{

@@ -13,5 +13,3 @@
    The component should also do the top level svg render that is in basic.tsx now.
    OOOOR, combine all these into a single <Graph nodes=[] edges=[]> component.  YAAAAAH, thats it.
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
-* make markers smaller??
-* export base colors in lib so it can be used in demo/app

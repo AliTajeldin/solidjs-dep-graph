@@ -9,8 +9,8 @@ export function CircleMarker(props: MarkerProps) {
       refX="12"
       refY="6"
       markerUnits="strokeWidth"
-      markerWidth="6"
-      markerHeight="6"
+      markerWidth="4"
+      markerHeight="4"
       orient="auto-start-reverse"
     >
       <circle cx="6" cy="6" r="5" style={{
