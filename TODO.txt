@@ -12,6 +12,7 @@
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
 * publish the library
 * add maxWidth, maxHeight, and fitToSize attributes to Graph Component
+* turn on minify in lib/demo build before publish!
 * Examples:
    * basic
    * Styles (node/edge color, dash, etc)

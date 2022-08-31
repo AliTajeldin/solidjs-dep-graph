@@ -5,7 +5,7 @@
   "license": "APACHE",
   "scripts": {
     "dev": "cd ./demo && pnpm dev",
-    "build": "cd ./lib && pnpm build",
+    "build": "pnpm -r build",
     "preview": "cd ./demo && pnpm preview",
     "clobber": "rm -rf node_modules dist && pnpm run -r clobber"
   },

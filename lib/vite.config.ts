@@ -5,11 +5,6 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [solidPlugin({ ssr: false }), dts()],
-  server: {
-    port: 3000,
-    hmr: true,
-
-  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.tsx'),
