@@ -8,7 +8,10 @@
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
 * add support for multi-directional ("to" [default], "from", "both" for arrow type)
+* add example/demo with node/edge factory (e.g. BlueNode(t,f) which creates a blue node)
 * move Graph to GraphInfo/Data and create a separate Graph component that does the rendering and takes GraphInfo as input.
    The component should also do the top level svg render that is in basic.tsx now.
    OOOOR, combine all these into a single <Graph nodes=[] edges=[]> component.  YAAAAAH, thats it.
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
+* make markers smaller??
+* export base colors in lib so it can be used in demo/app

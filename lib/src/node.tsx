@@ -3,7 +3,7 @@ import { defaultsDeep } from 'lodash-es';
 import { Factory } from "./factory";
 import { LabelStyle, Point, ShapeStyle } from "./types";
 import { Shapes, Intersection } from "kld-intersections";
-import colors from './styles/colors';
+import { labelStyle } from "./styles";
 
 export interface NodeOptions {
   shape?: string;
@@ -40,7 +40,7 @@ export class Node {
   }
 
   computeSize() {
-    return [20 + 5.5 * this.label.length, 25]
+    return [22 + 6.0 * this.label.length, 30]
   }
 
   renderShape() {
@@ -50,15 +50,13 @@ export class Node {
 
   renderLabel() {
     return (
-      <text dominant-baseline="middle" text-anchor="middle"
-        style={{
-          "font-size": "0.75rem",
-          "font-weight": 100,
-          "line-height": "1rem",
-          "stroke": colors.labelFG,
-          "user-select": "none",
-          ...this.nodeOptions.labelStyle}}
-      > {this.label} </text>
+      <text dominant-baseline="middle" text-anchor="middle" style={{
+        "font-weight": 100, // doesn't work if added to labelStyle!!!
+        ...labelStyle,
+        ...this.nodeOptions.labelStyle
+      }}>
+        {this.label}
+      </text>
     );
   }
 

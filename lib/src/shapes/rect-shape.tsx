@@ -1,6 +1,6 @@
 import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
-import colors from '../styles/colors';
+import { shapeStyle } from '../styles';
 
 export class RectShape implements Shape {
   render(width: number, height: number, style: ShapeStyle) {
@@ -10,8 +10,7 @@ export class RectShape implements Shape {
     return (
       <rect x={xoff} y={yoff} width={width} height={height} rx="5"
         style={{
-          fill: colors.nodeBG,
-          stroke: colors.nodeBorder,
+          ...shapeStyle,
           ...style
         }} />
     );

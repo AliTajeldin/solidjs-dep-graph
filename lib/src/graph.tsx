@@ -13,11 +13,11 @@ export interface LayoutOptions {
 };
 
 const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
-  marginx: 10,
-  marginy: 10,
+  marginx: 20,
+  marginy: 20,
   rankdir: 'LR',
-  ranksep: 50,
-  nodesep: 30,
+  ranksep: 55,
+  nodesep: 35,
   // ranksep: 30,
   // nodesep: 20,
 };

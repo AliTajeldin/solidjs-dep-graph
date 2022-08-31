@@ -2,6 +2,7 @@ import { JSXElement, Show } from "solid-js";
 import { defaultsDeep } from "lodash-es";
 import { EdgeStyle, MarkerStyle } from "./types";
 import { Factory } from "./factory";
+import { edgeStyle } from "./styles";
 
 export interface EdgeOptions {
   endMarkerType?: string,
@@ -38,8 +39,7 @@ export class Edge {
     const lines = this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
     return <g style={{
-      fill: "transparent",
-      stroke: "red",
+      ...edgeStyle,
       ...this.edgeOptions.edgeStyle,
     }}>
       <path d={`${move} ${lines}`} marker-end={`url(#${markerId}`} />
