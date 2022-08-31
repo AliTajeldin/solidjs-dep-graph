@@ -20,3 +20,21 @@ export class Point {
     this.y = y
   }
 };
+
+export class Size {
+  readonly width: number;
+  readonly height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width
+    this.height = height
+  }
+}
+
+export interface LayoutOptions {
+  rankdir?: string,
+  marginx?: number,
+  marginy?: number,
+  ranksep?: number,
+  nodesep?: number,
+};

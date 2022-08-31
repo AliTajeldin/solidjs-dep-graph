@@ -38,12 +38,6 @@ export default function Basic() {
 
   const graph = new Graph(nodes, edges);
 
-  // TODO: this should move into graph.render on first call!
-  //       but, how do we get width/height to set svg .
-  //       OOOR, do this in Graph ctor.
-  graph.layout()
-  // graph.dump();
-
   return (
     <svg class={c.svgBasic} width={graph.getWidth()} height={graph.getHeight()}
       preserveAspectRatio="none" >

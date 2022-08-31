@@ -1,30 +1,9 @@
-import { graphlib, layout } from "dagre";
 import { Accessor, createSignal, For, JSX, Setter } from "solid-js";
 import { Node } from "./node";
 import { Edge } from "./edge";
 import { renderDebugMsg, showMouseEvent } from "./debug-msg";
-
-export interface LayoutOptions {
-  rankdir?: string,
-  marginx?: number,
-  marginy?: number,
-  ranksep?: number,
-  nodesep?: number,
-};
-
-const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
-  marginx: 20,
-  marginy: 20,
-  rankdir: 'LR',
-  ranksep: 55,
-  nodesep: 35,
-};
-
-// add width, height as they are added during layout by Dagre
-interface InternalLayoutOptions extends LayoutOptions {
-  width?: number,
-  height?: number,
-};
+import { dagreLayout } from "./dagre-layout";
+import { Size, LayoutOptions } from "./types";
 
 interface PanZoom {
   scale: number,
@@ -35,55 +14,27 @@ interface PanZoom {
 export class Graph {
   nodes: Node[];
   edges: Edge[];
-  layoutOptions: InternalLayoutOptions;
+  userLayoutOptions: LayoutOptions;
+  size: Size;
   readonly getPanZoom: Accessor<PanZoom>;
   readonly setPanZoom: Setter<PanZoom>;
 
   constructor(nodes: Node[] = [], edges: Edge[] = [], userLayoutOptions: LayoutOptions = {}) {
     this.nodes = nodes;
     this.edges = edges;
-
-    this.layoutOptions = Object.assign({}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions);
+    this.userLayoutOptions = userLayoutOptions;
 
     [this.getPanZoom, this.setPanZoom] = createSignal({
       scale: 1,
       xOffset: 0,
       yOffset: 0,
     });
+
+    this.size = dagreLayout(this.nodes, this.edges, this.userLayoutOptions);
   }
 
-  getWidth() { return this.layoutOptions.width }
-  getHeight() { return this.layoutOptions.height }
-
-  // TODO: extract this into own DagreLayout class, when we add ElkLayout later :-)
-  layout() {
-    const graph = new graphlib.Graph();
-    graph.setGraph(this.layoutOptions);
-    // TODO: is this needed??
-    graph.setDefaultEdgeLabel(() => { return {} });
-
-    const nodeMap: Record<string, Node> = {};
-    this.nodes.forEach((n) => {
-      graph.setNode(n.id, n);
-      nodeMap[n.id] = n;
-    });
-    this.edges.forEach((e) => graph.setEdge(e.from, e.to, e));
-
-    layout(graph);
-
-    // adjust edges so first/last points move to intersection point with the to/from node.
-    this.edges.forEach((e) => {
-      const fromNode = nodeMap[e.from];
-      const toNode = nodeMap[e.to];
-      const lastIdx = e.points.length - 1;
-      if (lastIdx < 2) {
-        throw new Error(`too few edge points to go on Edge(${e.from},${e.to})`)
-      }
-
-      e.points[0] = fromNode.intersect(e.points[1]);
-      e.points[lastIdx] = toNode.intersect(e.points[lastIdx - 1]);
-    });
-  }
+  getWidth() { return this.size.width }
+  getHeight() { return this.size.height }
 
   private handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {
     evt.preventDefault();
@@ -132,7 +83,7 @@ export class Graph {
       <svg pointer-events="visible"
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
       >
-        <rect class="pointer-target" width="100%" height="100%" style="fill: transparent"/>
+        <rect class="pointer-target" width="100%" height="100%" style="fill: transparent" />
         <g pointer-events="none"
           transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
           <For each={Array.from(this.nodes.values())}>
@@ -147,9 +98,9 @@ export class Graph {
     );
   }
 
-  dump() {
-    console.log("Layout =", this.layoutOptions);
-    this.nodes.forEach((n, id) => console.log(`Node(${id}) = `, n));
-    this.edges.forEach(e => console.log(`Edge(${e.from}, ${e.to}) = `, e));
-  }
+  // dump() {
+  //   console.log("Layout =", this.layoutOptions);
+  //   this.nodes.forEach((n, id) => console.log(`Node(${id}) = `, n));
+  //   this.edges.forEach(e => console.log(`Edge(${e.from}, ${e.to}) = `, e));
+  // }
 }

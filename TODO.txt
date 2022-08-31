@@ -14,3 +14,10 @@
    OOOOR, combine all these into a single <Graph nodes=[] edges=[]> component.  YAAAAAH, thats it.
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
 * publish the library
+* library should export types/*, layoutoptions, etc.
+* add maxWidth, maxHeight, and fitToSize attributes to Graph Component
+* Examples:
+   * basic
+   * Styles (node/edge color, dash, etc)
+   * custom shapes
+   * multi-graph (to show independent state)
