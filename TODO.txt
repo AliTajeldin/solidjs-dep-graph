@@ -1,8 +1,8 @@
-* create separate example/lib directory and config vite to build a library
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
    OR, use @solid-primitives/resize-observer for a solidjs specific answer.
 * scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
 * should do pan by button down/up so only handle move when button is down.
+* make pan/zoom an option (on by default)
 * Node add a get width() getter that calls computeWidth() that would lazy eval
    the computed width based on input params
 * Node add hover tool tip with extra info.
@@ -13,3 +13,4 @@
    The component should also do the top level svg render that is in basic.tsx now.
    OOOOR, combine all these into a single <Graph nodes=[] edges=[]> component.  YAAAAAH, thats it.
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
+* publish the library

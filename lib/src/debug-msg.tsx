@@ -17,9 +17,21 @@ export function renderDebugMsg() {
   debugMsgRendered = true;
   return (
     <Portal>
-    <div class="fixed top-0 right-0 text-cyan-300 bg-black pr-1 pt-1 min-w-[100px] min-h-[25px]">
-      <p style={{stroke: "yellow"}}>{debugMsg()}</p>
-    </div>
+      <div style={{
+        position: "fixed",
+        "top": 0,
+        "right": 0,
+        color: "cyan",
+        "background-color": "black",
+        "padding-right": "10px",
+        "padding-top": "10px",
+        "min-width": "100px",
+        "min-height": "25px",
+      }}>
+        <p style={{ stroke: "yellow" }}>
+          {debugMsg()}
+        </p>
+      </div>
     </Portal>
   );
 }
@@ -27,7 +39,7 @@ export function renderDebugMsg() {
 /**
  * should be called as handler for mousemove (e.g. <elem onmousemove={showMouseEvent})
  */
-export const showMouseEvent : JSX.EventHandler<HTMLOrSVGElement, MouseEvent> = (e) => {
+export const showMouseEvent: JSX.EventHandler<HTMLOrSVGElement, MouseEvent> = (e) => {
   if (!debugMsgRendered) {
     console.error("must render debug msg div first!");
   }

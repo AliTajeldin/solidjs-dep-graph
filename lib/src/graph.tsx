@@ -18,8 +18,6 @@ const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
   rankdir: 'LR',
   ranksep: 55,
   nodesep: 35,
-  // ranksep: 30,
-  // nodesep: 20,
 };
 
 // add width, height as they are added during layout by Dagre
