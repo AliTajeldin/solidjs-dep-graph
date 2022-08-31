@@ -21,14 +21,11 @@ export function renderDebugMsg() {
         position: "fixed",
         "top": 0,
         "right": 0,
-        color: "cyan",
-        "background-color": "black",
-        "padding-right": "10px",
-        "padding-top": "10px",
+        "background-color": "yellow",
         "min-width": "100px",
-        "min-height": "25px",
+        "min-height": "20px",
       }}>
-        <p style={{ stroke: "yellow" }}>
+        <p style="color: black; margin:0; padding:5px">
           {debugMsg()}
         </p>
       </div>

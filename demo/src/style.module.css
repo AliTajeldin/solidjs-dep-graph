@@ -15,9 +15,3 @@
   height: 100vh;
   display: flow-root;
 }
-
-.svgBasic {
-  margin-top: 30px;
-  margin-left: 30px;
-  border: 2px solid rgb(0, 129, 129)
-}

@@ -38,3 +38,6 @@ export const labelStyle = {
   "user-select": "none",
 }
 
+export const borderStyle = {
+  border: `1px solid ${colors.gray9}`,
+}

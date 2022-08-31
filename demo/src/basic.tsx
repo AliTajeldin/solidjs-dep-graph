@@ -39,9 +39,8 @@ export default function Basic() {
   const graph = new Graph(nodes, edges);
 
   return (
-    <svg class={c.svgBasic} width={graph.getWidth()} height={graph.getHeight()}
-      preserveAspectRatio="none" >
+    <div style="margin: 30px">
       {graph.render()}
-    </svg>
+    </div>
   );
 }

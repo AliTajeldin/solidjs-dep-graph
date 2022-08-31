@@ -4,6 +4,7 @@ import { Edge } from "./edge";
 import { renderDebugMsg, showMouseEvent } from "./debug-msg";
 import { dagreLayout } from "./dagre-layout";
 import { Size, LayoutOptions } from "./types";
+import { borderStyle } from "./styles";
 
 interface PanZoom {
   scale: number,
@@ -32,9 +33,6 @@ export class Graph {
 
     this.size = dagreLayout(this.nodes, this.edges, this.userLayoutOptions);
   }
-
-  getWidth() { return this.size.width }
-  getHeight() { return this.size.height }
 
   private handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {
     evt.preventDefault();
@@ -80,8 +78,11 @@ export class Graph {
   render() {
     const pz = this.getPanZoom;
     return (
-      <svg pointer-events="visible"
+      <svg width={this.size.width} height={this.size.height}
+        preserveAspectRatio="none"
+        pointer-events="visible"
         onMouseMove={this.handleMouseMove} onWheel={this.handleWheel}
+        style={borderStyle}
       >
         <rect class="pointer-target" width="100%" height="100%" style="fill: transparent" />
         <g pointer-events="none"
@@ -97,10 +98,4 @@ export class Graph {
       </svg>
     );
   }
-
-  // dump() {
-  //   console.log("Layout =", this.layoutOptions);
-  //   this.nodes.forEach((n, id) => console.log(`Node(${id}) = `, n));
-  //   this.edges.forEach(e => console.log(`Edge(${e.from}, ${e.to}) = `, e));
-  // }
 }
