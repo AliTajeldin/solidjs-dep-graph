@@ -86,7 +86,7 @@ export function Graph(props: GraphOptions) {
           {(e) => e.render()}
         </For>
       </g>
-      {renderDebugMsg()}
+      {/* {renderDebugMsg()} */}
     </svg>
   );
 }

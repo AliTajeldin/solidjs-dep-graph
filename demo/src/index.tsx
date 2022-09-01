@@ -1,12 +1,20 @@
 /* @refresh reload */
+import { Router, useRoutes, Link } from "@solidjs/router";
+import { routes } from './routes';
 import { render } from 'solid-js/web';
-import Basic from './basic';
+import Nav from './nav';
 import c from './style.module.css';
 
 export const App = () => {
+  const Routes = useRoutes(routes);
   return <main class={c.mainContainer}>
-    <Basic />
+    <Nav />
+    <Routes />
   </main>
 }
 
-render(() => <App />, document.getElementById('root') as HTMLElement);
+render(() => (
+  <Router>
+    <App />
+  </Router>),
+  document.getElementById('root') as HTMLElement);
