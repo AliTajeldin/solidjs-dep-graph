@@ -1,9 +1,10 @@
-import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
+import { Shape } from "./shape-types";
+import { StylePropsT } from "../types";
 import { shapeStyle } from '../styles';
 
 export class RectShape implements Shape {
-  render(width: number, height: number, style: ShapeStyle) {
+  render(width: number, height: number, style: StylePropsT) {
     const xoff = -width / 2;
     const yoff = -height / 2;
 

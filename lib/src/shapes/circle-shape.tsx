@@ -1,5 +1,6 @@
-import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
+import { Shape } from "./shape-types";
+import { StylePropsT } from "../types";
 import { shapeStyle } from '../styles';
 
 export class CircleShape implements Shape {
@@ -7,7 +8,7 @@ export class CircleShape implements Shape {
     return Math.max(width, height)/2;
   }
 
-  render(width: number, height: number, style: ShapeStyle) {
+  render(width: number, height: number, style: StylePropsT) {
     const r = this.radius(width, height);
 
     return (

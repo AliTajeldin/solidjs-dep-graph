@@ -1,14 +1,14 @@
 import { JSX, JSXElement } from "solid-js";
 import { defaultsDeep } from 'lodash-es';
 import { Factory } from "./factory";
-import { LabelStyle, Point, ShapeStyle } from "./types";
+import { Point, StylePropsT } from "./types";
 import { Shapes, Intersection } from "kld-intersections";
 import { labelStyle } from "./styles";
 
 export interface NodeOptions {
   shape?: string;
-  shapeStyle?: ShapeStyle;
-  labelStyle?: LabelStyle;
+  shapeStyle?: StylePropsT;
+  labelStyle?: StylePropsT;
 };
 
 const defaultNodeOptions: NodeOptions = {
@@ -44,7 +44,7 @@ export class Node {
   }
 
   renderShape() {
-    const shape = Factory.instance.getShape(this.nodeOptions.shape);
+    const shape = Factory.getShape(this.nodeOptions.shape);
     return shape.render(this.width, this.height, this.nodeOptions.shapeStyle);
   }
 
@@ -68,7 +68,7 @@ export class Node {
   // point and return point are both in graph coordinates.
   // while shapeInfo and intersects are using shape coordinates (origin 0,0)
   intersect(point: Point): Point {
-    const shape = Factory.instance.getShape(this.nodeOptions.shape);
+    const shape = Factory.getShape(this.nodeOptions.shape);
     const nodeShape = shape.shapeInfo(this.width, this.height);
     const lineShape = Shapes.line(point.x - this.x, point.y - this.y, 0, 0);
 

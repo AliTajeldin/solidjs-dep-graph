@@ -1,5 +1,6 @@
-import { Shape, ShapeStyle } from "../types";
 import { ShapeInfo, Shapes } from "kld-intersections";
+import { Shape } from "./shape-types";
+import { StylePropsT } from "../types";
 import { shapeStyle } from '../styles';
 
 export class DiamondShape implements Shape {
@@ -10,7 +11,7 @@ export class DiamondShape implements Shape {
     return `M -${xoff} 0 L 0 -${yoff} L ${xoff} 0 L 0 ${yoff} z`;
   }
 
-  render(width: number, height: number, style: ShapeStyle) {
+  render(width: number, height: number, style: StylePropsT) {
     return (
       <path d={this.pathString(width, height)} style={{
         ...shapeStyle,

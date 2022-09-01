@@ -18,3 +18,8 @@
    * Styles (node/edge color, dash, etc)
    * custom shapes
    * multi-graph (to show independent state)
+* Create GraphInfo class to hold graph store and add a `addNodes()` and `addEdges()`:
+   ```createGraphInfo().addNodes(...).addEdges(...).setLayoutOption(...)
+      <Graph graph-info={graphInfo}/>
+      ... Here we can do "updateNode(n)", "updateEdge()" or "addNode()", etc
+   ```

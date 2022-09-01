@@ -1,13 +1,13 @@
 import { JSXElement, Show } from "solid-js";
 import { defaultsDeep } from "lodash-es";
-import { EdgeStyle, MarkerStyle } from "./types";
+import { StylePropsT  } from "./types";
 import { Factory } from "./factory";
 import { edgeStyle } from "./styles";
 
 export interface EdgeOptions {
   endMarkerType?: string,
-  edgeStyle?: EdgeStyle,
-  markerStyle?: MarkerStyle,
+  edgeStyle?: StylePropsT,
+  markerStyle?: StylePropsT,
 };
 
 const defaultEdgeOptions: EdgeOptions = {
@@ -33,7 +33,7 @@ export class Edge {
   }
 
   render(): JSXElement {
-    const Marker = Factory.instance.getMarker(this.edgeOptions.endMarkerType);
+    const Marker = Factory.getMarker(this.edgeOptions.endMarkerType);
     const markerId = `sdg-marker-${this.id}`;
     const move = `M ${this.points[0].x},${this.points[0].y}`;
     const lines = this.points.slice(1).
