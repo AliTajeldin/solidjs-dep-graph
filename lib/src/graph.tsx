@@ -2,9 +2,10 @@ import { createSignal, For, JSX } from "solid-js";
 import { Node } from "./node";
 import { Edge } from "./edge";
 import { renderDebugMsg, showMouseEvent } from "./debug-msg";
-import { dagreLayout } from "./dagre-layout";
-import { LayoutOptions } from "./types";
+import { dagreLayout, LayoutOptions } from "./dagre-layout";
 import { borderStyle } from "./styles";
+
+export type { LayoutOptions };
 
 interface PanZoom {
   scale: number,

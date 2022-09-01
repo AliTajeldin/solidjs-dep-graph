@@ -1,7 +1,16 @@
 import { graphlib, layout } from "dagre";
 import { Node } from "./node";
 import { Edge } from "./edge";
-import { Size, LayoutOptions } from "./types";
+import { Size } from "./types";
+
+// TODO: move this closer to where it is defined!
+export interface LayoutOptions {
+  rankdir?: string,
+  marginx?: number,
+  marginy?: number,
+  ranksep?: number,
+  nodesep?: number,
+};
 
 const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
   marginx: 20,

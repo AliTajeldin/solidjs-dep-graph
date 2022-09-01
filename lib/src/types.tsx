@@ -20,12 +20,3 @@ export class Size {
     this.height = height
   }
 }
-
-// TODO: move this closer to where it is defined!
-export interface LayoutOptions {
-  rankdir?: string,
-  marginx?: number,
-  marginy?: number,
-  ranksep?: number,
-  nodesep?: number,
-};
