@@ -1,7 +1,13 @@
 import { ShapeInfo, Shapes } from "kld-intersections";
 import { Node, Edge, Graph, colors } from "solidjs-dep-graph";
 import { Shape, StylePropsT, shapeStyle, Factory } from "solidjs-dep-graph";
+import { MarkerProps, markerStyle } from "solidjs-dep-graph";
+import c from '../style.module.css';
 
+
+/**
+ * custom shapes must implement the `render` and `shapeInfo` methods.
+ */
 class HouseShape implements Shape {
   private pathString(width: number, height: number) {
     const xoff = width / 2;
@@ -25,8 +31,29 @@ class HouseShape implements Shape {
 }
 
 
+export function BigRevArrowMarker(props: MarkerProps) {
+  return (
+    <marker
+      id={props.id}
+      viewBox="0 0 10 10"
+      refX="9"
+      refY="5"
+      markerUnits="strokeWidth"
+      markerWidth="7"
+      markerHeight="7"
+      orient="auto-start-reverse"
+    >
+      <path d="M 10 0 L 10 10 L 0 5 z" style={{
+        ...markerStyle,
+        ...props.markerStyle
+      }} />
+    </marker>
+  );
+}
+
 export default function Custom() {
   Factory.registerShape("house", new HouseShape());
+  Factory.registerMarker("big-rev-arrow", BigRevArrowMarker);
 
   const nodes: Node[] = [
     new Node("1", "Node 1"),
@@ -36,13 +63,21 @@ export default function Custom() {
   ];
   const edges: Edge[] = [
     new Edge("1", "2",),
-    new Edge("2", "3",),
+    new Edge("2", "3", {
+      endMarkerType: "big-rev-arrow",
+      markerStyle: { stroke: "yellow", fill: "green" }
+    }),
     new Edge("2", "4"),
   ];
 
   return (
-    <div style="margin: 30px">
+    <div class={c.demoArea} style="margin: 25px">
       <Graph nodes={nodes} edges={edges} />
+      <div class={c.demoDescription}>
+        Custom shapes and markers can be used by simply registering them
+        with the `Factory`.<br/>
+        User styles can still be applied over custom shapes/markers.
+      </div>
     </div>
   );
 }

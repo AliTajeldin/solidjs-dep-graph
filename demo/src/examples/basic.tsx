@@ -1,4 +1,5 @@
 import { Node, Edge, Graph } from "solidjs-dep-graph";
+import c from '../style.module.css';
 
 export default function Basic() {
   const nodes: Node[] = [
@@ -33,11 +34,18 @@ export default function Basic() {
     new Edge("2", "4"),
     new Edge("1", "5"),
     new Edge("1", "6",),
-  ];
+  ]; 
 
   return (
-    <div style="margin: 30px">
+    <div class={c.demoArea} style="margin: 25px">
       <Graph nodes={nodes} edges={edges}/>
+      <div class={c.demoDescription}>
+        An example of simplest graph.<br/>Only two properties are required to be specified:
+        <ul>
+          <li>nodes: array of Node objects</li>
+          <li>edges: array of Edge objects</li>
+        </ul>
+      </div>
     </div>
   );
 }

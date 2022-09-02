@@ -47,5 +47,15 @@ The above would produce the following graph.
 
 ![Basic Example Image](./docs/img/basic_example.png)
 
+# Styling Override
+TBD
+
+# Custom Shapes / Markers
+solidjs-dep-graph allows user to provide custom shapes and markers.
+
+![Custom Example Image](./docs/img/custom_example.png)
+
+See [Customization](./docs/custom.md) documentation for details.
+
 # Documentation
-* [Detailed `Graph` options](./docs/graph.md)
+* [API Documentation](./docs/api.md)

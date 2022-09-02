@@ -45,7 +45,7 @@ export class Edge {
       <path d={`${move} ${lines}`} marker-end={`url(#${markerId}`} />
       <Show when={Marker !== null}>
         <defs>
-          <Marker id={markerId} markerStyle={{}} />
+          <Marker id={markerId} markerStyle={this.edgeOptions.markerStyle} />
         </defs>
       </Show>
     </g>

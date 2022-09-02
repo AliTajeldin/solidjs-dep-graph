@@ -33,3 +33,18 @@
 .navLink:active {
   background: rgb(81, 192, 168);
 }
+
+.demoArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* align-items: flex-start; */
+  gap: 30px;
+}
+
+.demoDescription {
+  padding: 10px;
+  border: 1px solid #999;
+  color: #ddd;
+}
