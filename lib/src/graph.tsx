@@ -52,7 +52,9 @@ export function Graph(props: GraphOptions) {
   };
 
   const handleMouseMove: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
-    showMouseEvent(evt);
+    // uncomment to show debug msg with location on graph!
+    // showMouseEvent(evt);
+
     // only do pan when mouse moves while only button 1 is pressed
     if (evt.buttons != 1) return;
 
