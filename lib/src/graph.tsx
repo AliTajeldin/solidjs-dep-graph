@@ -1,7 +1,7 @@
 import { createSignal, For, JSX } from "solid-js";
 import { Node } from "./node";
 import { Edge } from "./edge";
-import { renderDebugMsg, showMouseEvent } from "./debug-msg";
+// import { renderDebugMsg, showMouseEvent } from "./debug-msg";
 import { dagreLayout, LayoutOptions } from "./dagre-layout";
 import { borderStyle } from "./styles";
 

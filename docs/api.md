@@ -1,25 +1,63 @@
 # Graph API
 
 All `Graph` options are optional except for `nodes` and `edges`
-|Option|Type|Description|
-|------|----|-----------|
-|`nodes`|`Node[]`|(Req.) List of graph nodes|
-|`edges`|`Edge[]`|(Req.) List of edges connecting graph nodes|
-|`layoutOptions`|`LayoutOptions`|Layout algorithm options.  See below|
+
+
+```typescript
+<Graph ...GraphOptions />
+```
+
+```typescript
+interface GraphOptions {
+  nodes: Node[];
+  edges: Edge[];
+  layoutOptions?: LayoutOptions;
+}
+```
 
 ## Graph Layout options
 All layout options are optional
-|Option|Type|Default|Description|
-|------|----|-------|-----------|
-|rankdir|string|`'LR'`|Left to right (`'LR'`) or Top to Bottom (`'TB'`)|
-|marginx|number|20|left/right margin around graph inside SVG in pixels|
-|marginy|number|20|top/bottom margin around graph inside SVG in pixels|
-|ranksep|number|55|space between node levels (ranks)|
-|nodesep|number|35|space between nodes on same level|
+
+```typescript
+interface LayoutOptions {
+  rankdir?: string,
+  marginx?: number,
+  marginy?: number,
+  ranksep?: number,
+  nodesep?: number,
+};
+```
+* `rankdir` : Layout direction.  Left to right (`'LR'`) or Top to Bottom (`'TB'`). (Default: `'LR'`)
+* `marginx`/`marginy` : horizontal / vertical margin around graph inside SVG in pixels. (Default: 20)
+* `ranksep` : space between nodes levels/ranks. (Default: 55)
+* `ranksep` : space between nodes on same level. (Default: 35)
 
 # Node API
+```typescript
+new Node(node_id, node_label, node_options)
+```
+* `node_id` : must be unique for a given graph.  Same id can be reused across multiple graphs.  The id used as parameter to `Edge` to link nodes together.
+* `node_label`: can be any arbitrary label.  The size of the rendered node will expand to fit the node label.
+
+## Node options
+```typescript
+interface NodeOptions {
+  shape?: string;
+  shapeStyle?: StylePropsT;
+  labelStyle?: StylePropsT;
+}
+```
+* `shape` : the id of the builtin or registered custom shape. (Default "rect")
+* `shapeStyle` : style override of default shape style (e.g. can specify color, fill, stroke, etc.)
+* `labelStyle` : style override of node label style (e.g. font size, type, color, etc.)
+
+## Built-in shapes
+* `"rect"` : rectangle shape
+* `"circle"` : circle shape
+* `"diamond"` : diamond shape.  This usually renders slightly beigger than lable height/width to fit corners of diamond.
+
 
 # Edge API
-
-# TBD
-current markers / shapes and how to use them!
+## Built-in markers
+* `"arrow"` : 
+* `"circle"` : 
