@@ -54,7 +54,7 @@ interface NodeOptions {
 ## Built-in shapes
 * `"rect"` : rectangle shape
 * `"circle"` : circle shape
-* `"diamond"` : diamond shape.  This usually renders slightly beigger than lable height/width to fit corners of diamond.
+* `"diamond"` : diamond shape.  This usually renders slightly bigger than lable height/width to fit corners of diamond.
 
 
 # Edge API

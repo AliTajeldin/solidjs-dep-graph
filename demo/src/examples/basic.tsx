@@ -1,7 +1,7 @@
 import { Node, Edge, Graph } from "solidjs-dep-graph";
 import c from '../style.module.css';
 
-export default function Basic() {
+export default function BasicExample() {
   const nodes: Node[] = [
     //   new Node("1", "Node 1", { shape: "circle" }),
     //   new Node("2", "2", { shape: "diamond" }),

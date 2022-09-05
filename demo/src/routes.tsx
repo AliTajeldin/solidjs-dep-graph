@@ -6,7 +6,11 @@ export const routes = [
     component: lazy(() => import("./examples/basic"))
   },
   {
+    path: "/style",
+    component: lazy(() => import("./examples/style"))
+  },
+  {
     path: "/custom",
     component: lazy(() => import("./examples/custom"))
-  }
+  },
 ];

@@ -51,7 +51,7 @@ export function BigRevArrowMarker(props: MarkerProps) {
   );
 }
 
-export default function Custom() {
+export default function CustomExample() {
   Factory.registerShape("house", new HouseShape());
   Factory.registerMarker("big-rev-arrow", BigRevArrowMarker);
 
@@ -74,7 +74,7 @@ export default function Custom() {
     <div class={c.demoArea} style="margin: 25px">
       <Graph nodes={nodes} edges={edges} />
       <div class={c.demoDescription}>
-        Custom shapes and markers can be used by simply registering them
+      Custom shapes and markers can be used by simply registering them
         with the `Factory`.<br/>
         User styles can still be applied over custom shapes/markers.
       </div>
