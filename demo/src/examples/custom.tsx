@@ -62,7 +62,7 @@ export default function CustomExample() {
     new Node("4", "Node 4", { shape: "house" }),
   ];
   const edges: Edge[] = [
-    new Edge("1", "2",),
+    new Edge("1", "2",{ endMarkerType: "circle",}),
     new Edge("2", "3", {
       endMarkerType: "big-rev-arrow",
       markerStyle: { stroke: "yellow", fill: "green" }
