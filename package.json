@@ -1,15 +1,17 @@
 {
-  "name": "solidjs-dep-graph",
+  "name": "xxx-solidjs-dep-graph-xxx",
   "version": "0.0.1",
-  "description": "dependency graphs in solidjs",
+  "description": "mono-repo wrapper.  The actual package.json is in ./lib dir",
   "license": "APACHE",
   "scripts": {
     "dev": "cd ./demo && pnpm dev",
     "build": "pnpm -r build",
     "preview": "cd ./demo && pnpm preview",
-    "clobber": "rm -rf node_modules dist && pnpm run -r clobber"
+    "clobber": "rm -rf node_modules dist && pnpm run -r clobber",
+    "release": "cd ./lib && pnpm build && pnpm release"
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "private": "true"
 }
