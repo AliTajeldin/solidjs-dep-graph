@@ -1,6 +1,6 @@
 {
   "name": "solidjs-dep-graph",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Ali Tajeldin",
   "description": "dependency graphs in solidjs",
   "main": "./dist/solid-dep-graph.umd.cjs",
@@ -9,9 +9,20 @@
   "type": "module",
   "files": [
     "dist",
+    "README.md",
     "LICENSE"
   ],
   "license": "APACHE",
+  "keywords": [
+    "dagre",
+    "solidjs",
+    "graph",
+    "layout"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliTajeldin/solidjs-dep-graph"
+  },
   "scripts": {
     "build": "vite build",
     "clobber": "rm -rf node_modules dist",
