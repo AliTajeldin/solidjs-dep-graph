@@ -13,4 +13,8 @@ export const routes = [
     path: "/custom",
     component: lazy(() => import("./examples/custom"))
   },
+  {
+    path: "/resource",
+    component: lazy(() => import("./examples/resource"))
+  },
 ];

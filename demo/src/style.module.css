@@ -8,6 +8,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+:global(p) {
+  color: white;
+}
+
 .mainContainer {
   background-color: rgb(29, 30, 33);
   width: 100vw;

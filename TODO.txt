@@ -1,5 +1,10 @@
+* add warning in README about work in progress and api can change especially the options.
+* link / copy READMe into lib dir so it can become part of release
+* delayed loading test case!
+
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
    OR, use @solid-primitives/resize-observer for a solidjs specific answer.
+* add option for "ranker" layout options (e.g. "network-simplex", "tight-tree", "longest-path")
 * scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
 * should do pan by button down/up so only handle move when button is down.
 * make pan/zoom an option (on by default)
