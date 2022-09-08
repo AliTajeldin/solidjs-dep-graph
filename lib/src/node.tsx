@@ -7,12 +7,14 @@ import { labelStyle } from "./styles";
 
 export interface NodeOptions {
   shape?: string;
+  dblClickCB?: (n: Node, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
 };
 
 const defaultNodeOptions: NodeOptions = {
   shape: "rect",
+  dblClickCB: undefined,
   shapeStyle: {},
   labelStyle: {},
 }
@@ -61,7 +63,7 @@ export class Node {
   }
 
   private handleDblClick: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
-    console.log("node double click", evt);
+    this.nodeOptions.dblClickCB?.call(this, this, evt);
   }
 
   // determine where given point intersects (enters) this node.
