@@ -18,13 +18,7 @@
 * publish the library
 * add maxWidth, maxHeight, and fitToSize attributes to Graph Component
 * turn on minify in lib/demo build before publish!
-* Examples:
-   * basic
-   * Styles (node/edge color, dash, etc)
-   * custom shapes
+* Examples to add:
+   * callbacks example
    * multi-graph (to show independent state)
-* Create GraphInfo class to hold graph store and add a `addNodes()` and `addEdges()`:
-   ```createGraphInfo().addNodes(...).addEdges(...).setLayoutOption(...)
-      <Graph graph-info={graphInfo}/>
-      ... Here we can do "updateNode(n)", "updateEdge()" or "addNode()", etc
-   ```
+* add support for additional layout algorithms (e.g. ELK, force, etc)

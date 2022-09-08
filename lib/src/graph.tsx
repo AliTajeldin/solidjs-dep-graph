@@ -1,4 +1,4 @@
-import { createSignal, For, JSX } from "solid-js";
+import { createMemo, createSignal, For, JSX, Show } from "solid-js";
 import { Node } from "./node";
 import { Edge } from "./edge";
 // import { renderDebugMsg, showMouseEvent } from "./debug-msg";
@@ -26,7 +26,9 @@ export function Graph(props: GraphOptions) {
     yOffset: 0,
   });
 
-  const size = dagreLayout(props.nodes, props.edges, props.layoutOptions);
+  const size = createMemo(() => {
+    return dagreLayout(props.nodes, props.edges, props.layoutOptions);
+  });
 
   const handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {
     evt.preventDefault();
@@ -72,23 +74,25 @@ export function Graph(props: GraphOptions) {
   // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
   // without such rect, svg will only get pointer events on painted nodes/edges.
   return (
-    <svg width={size.width} height={size.height}
-      preserveAspectRatio="none"
-      pointer-events="visible"
-      onMouseMove={handleMouseMove} onWheel={handleWheel}
-      style={borderStyle}
-    >
-      <rect class="pointer-target" width="100%" height="100%" style="fill: transparent" />
-      <g pointer-events="none"
-        transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
-        <For each={Array.from(props.nodes.values())}>
-          {(n) => n.render()}
-        </For>
-        <For each={props.edges}>
-          {(e) => e.render()}
-        </For>
-      </g>
-      {/* {renderDebugMsg()} */}
-    </svg>
+    <Show when={size()}>
+      <svg {...size()}
+        preserveAspectRatio="none"
+        pointer-events="visible"
+        onMouseMove={handleMouseMove} onWheel={handleWheel}
+        style={borderStyle}
+      >
+        <rect class="pointer-target" width="100%" height="100%" style="fill: transparent" />
+        <g pointer-events="none"
+          transform={`matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`}>
+          <For each={props.nodes}>
+            {(n) => n.render()}
+          </For>
+          <For each={props.edges}>
+            {(e) => e.render()}
+          </For>
+        </g>
+        {/* {renderDebugMsg()} */}
+      </svg>
+    </Show>
   );
 }

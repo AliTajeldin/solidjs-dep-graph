@@ -1,4 +1,4 @@
-import { createResource, Show, Suspense } from "solid-js";
+import { createResource, Show } from "solid-js";
 import { Node, Edge, Graph } from "solidjs-dep-graph";
 import c from '../style.module.css';
 
@@ -21,9 +21,8 @@ const data: GraphInfo = {
 };
 
 async function fetchGraphInfo(): Promise<GraphInfo> {
-  console.log('fetchGraphInfo start');
-  await new Promise(r => setTimeout(r, 2000));
-  console.log('fetchGraphInfo end');
+  // simulate a slight delay
+  await new Promise(r => setTimeout(r, 1000));
   return data;
 }
 
@@ -32,17 +31,13 @@ export default function ResourceExample() {
 
   return (
     <div class={c.demoArea} style="margin: 25px">
-      <Suspense fallback={<p>Loading...</p>}>
-        <Show when={graphInfo()} fallback={<p>Loading Show!!!</p>}>
-          {(info) =>
-            <Graph {...info} />
-          }
-        </Show>
-      </Suspense>
+      <Show when={graphInfo()} fallback={<p>Loading...</p>}>
+        <Graph {...graphInfo()} />
+      </Show>
       <div class={c.demoDescription}>
-        An example of graph info being loaded as a resource.<br/>
-        This is broken now and requires a "Show" hack to delta<br/>
-        first render until the info has been fetched.
+        An example of graph info being loaded as a resource.<br />
+        an explicit 1 sec delay is added to the fetch to simulate<br/>
+        a real fetch operation.<br/>
       </div>
     </div>
   );

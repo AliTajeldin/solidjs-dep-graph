@@ -30,14 +30,16 @@ export function dagreLayout(
   nodes: Node[],
   edges: Edge[],
   userLayoutOptions: LayoutOptions
-): Size {
+): Size | undefined {
+
+  if (typeof(nodes) === "undefined" || typeof(edges) == "undefined") {
+    return undefined;
+  }
 
   const layoutOptions: InternalLayoutOptions = Object.assign(
     {}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions ? userLayoutOptions : {});
   const graph = new graphlib.Graph();
   graph.setGraph(layoutOptions);
-  // TODO: is this needed??
-  graph.setDefaultEdgeLabel(() => { return {} });
 
   const nodeMap: Record<string, Node> = {};
   nodes.forEach((n) => {
