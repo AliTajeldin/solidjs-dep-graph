@@ -44,11 +44,13 @@ new Node(node_id, node_label, node_options)
 ```typescript
 interface NodeOptions {
   shape?: string;
+  dblClickCB?: (n: Node, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
 }
 ```
 * `shape` : the id of the builtin or registered custom shape. (Default "rect")
+* `dbClickCB` : a callback function that is called when user double clicks on a node. The callback is provide the `Node` instance that was clicked and the double click event as parameters.
 * `shapeStyle` : style override of default shape style (e.g. can specify color, fill, stroke, etc.)
 * `labelStyle` : style override of node label style (e.g. font size, type, color, etc.)
 

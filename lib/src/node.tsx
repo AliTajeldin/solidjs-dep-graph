@@ -62,7 +62,7 @@ export class Node {
     );
   }
 
-  private handleDblClick: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
+  private _handleDblClick: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
     this.nodeOptions.dblClickCB?.call(this, this, evt);
   }
 
@@ -83,7 +83,7 @@ export class Node {
   }
 
   render(): JSXElement {
-    return <g onDblClick={this.handleDblClick} pointer-events="all"
+    return <g onDblClick={this._handleDblClick} pointer-events="all"
       class="fill-transparent hover:fill-secondary-bg stroke-white"
       transform={`translate(${this.x} ${this.y})`}
     >
