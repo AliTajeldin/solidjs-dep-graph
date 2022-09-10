@@ -1,9 +1,5 @@
-* change base Node::handleDblClick to _blahblah to avoid name conflict
 * link / copy READMe into lib dir so it can become part of release
-* delayed loading test case!
 
-* add helper PathShape that only requires a "path" method and implements the render,shapeinfo methods directly.
-   Use DbShape as the example for a simple path shape.
 * add height/width override to node. (not to be computed based on string length)
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
    OR, use @solid-primitives/resize-observer for a solidjs specific answer.

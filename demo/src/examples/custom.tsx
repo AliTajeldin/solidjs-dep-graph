@@ -1,35 +1,21 @@
 import { ShapeInfo, Shapes } from "kld-intersections";
-import { Node, Edge, Graph, colors } from "solidjs-dep-graph";
+import { Node, Edge, Graph, colors, PathShape } from "solidjs-dep-graph";
 import { Shape, StylePropsT, shapeStyle, Factory } from "solidjs-dep-graph";
 import { MarkerProps, markerStyle } from "solidjs-dep-graph";
 import c from '../style.module.css';
 
 
 /**
- * custom shapes must implement the `render` and `shapeInfo` methods.
+ * For custom path shapes, we only need to implement the `path` method.
  */
-class HouseShape implements Shape {
-  private pathString(width: number, height: number) {
+class HouseShape extends PathShape {
+  path(width: number, height: number) {
     const xoff = width / 2;
     const yoff = height / 2;
 
     return `M -${xoff} ${yoff} L -${xoff} -${yoff / 2} L 0 -${yoff} L ${xoff} -${yoff / 2} L ${xoff} ${yoff} z`;
   }
-
-  render(width: number, height: number, style: StylePropsT) {
-    return (
-      <path d={this.pathString(width, height)} style={{
-        ...shapeStyle,
-        ...style
-      }} />
-    );
-  }
-
-  shapeInfo(width: number, height: number): ShapeInfo {
-    return Shapes.path(this.pathString(width, height));
-  }
 }
-
 
 export function BigRevArrowMarker(props: MarkerProps) {
   return (

@@ -23,6 +23,8 @@ Once registered, the custom class can be utilized in the same manner as any buil
  new Node("id", "node", { shape: "myhouse" })
 ```
 
+If the custom shape is defined by path element, then the `PathShape` class can be extended to provide the required `render` and `shapeInfo` methods and the user only has to provide a `path` method.  See example below.
+
 ## Example Custom Shape
 ```typescript
 import { ShapeInfo, Shapes } from "kld-intersections";
@@ -35,6 +37,18 @@ class MyCircleShape implements Shape {
 
   shapeInfo(width: number, height: number) : ShapeInfo {
     return Shapes.circle(0, 0, 20);
+  }
+}
+```
+
+## Example Path Custom Shape
+```typescript
+class HouseShape extends PathShape {
+  path(width: number, height: number) {
+    const xoff = width / 2;
+    const yoff = height / 2;
+
+    return `M -${xoff} ${yoff} L -${xoff} -${yoff / 2} L 0 -${yoff} L ${xoff} -${yoff / 2} L ${xoff} ${yoff} z`;
   }
 }
 ```

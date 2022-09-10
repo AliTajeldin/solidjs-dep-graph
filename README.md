@@ -62,3 +62,6 @@ See [Customization](./docs/custom.md) documentation for details.
 
 # TBD
 * Where and How to run the example code
+
+# CREDIT
+Many of the ideas here (especially the intersect code) came from [dagre-reactjs](https://github.com/bobthekingofegypt/dagre-reactjs).
