@@ -1,5 +1,5 @@
-* link / copy READMe into lib dir so it can become part of release
-
+* add styling image example to top README (similar to custom shapes section) and remove TBD.
+* remove TBD from readme and add blurp about example directory instead.
 * add height/width override to node. (not to be computed based on string length)
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
    OR, use @solid-primitives/resize-observer for a solidjs specific answer.
@@ -21,3 +21,4 @@
    * callbacks example
    * multi-graph (to show independent state)
 * add support for additional layout algorithms (e.g. ELK, force, etc)
+* add support for image nodes.

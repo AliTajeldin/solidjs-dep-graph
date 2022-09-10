@@ -40,16 +40,16 @@ export function BigRevArrowMarker(props: MarkerProps) {
 export default function CustomExample() {
   Factory.registerShape("house", new HouseShape());
   Factory.registerMarker("big-rev-arrow", BigRevArrowMarker);
-  const cb = (n:Node) => {console.log("Double click:", n.id); }
+  const cb = (n: Node) => { console.log("Double click:", n.id); }
 
   const nodes: Node[] = [
-    new Node("1", "Node 1", {dblClickCB:cb}),
+    new Node("1", "Node 1", { dblClickCB: cb }),
     new Node("2", "Node 2", { shape: "house", shapeStyle: { fill: colors.blue2, } }),
-    new Node("3", "Node 3", {dblClickCB:cb}),
-    new Node("4", "Node 4", { shape: "house" }),
+    new Node("3", "Node 3", { dblClickCB: cb }),
+    new Node("4", "Node 4", { width: 100, height: 50, shape: "house" }),
   ];
   const edges: Edge[] = [
-    new Edge("1", "2",{ endMarkerType: "circle",}),
+    new Edge("1", "2", { endMarkerType: "circle", }),
     new Edge("2", "3", {
       endMarkerType: "big-rev-arrow",
       markerStyle: { stroke: "yellow", fill: "green" }
@@ -61,10 +61,11 @@ export default function CustomExample() {
     <div class={c.demoArea} style="margin: 25px">
       <Graph nodes={nodes} edges={edges} />
       <div class={c.demoDescription}>
-      Custom shapes and markers can be used by simply registering them
-        with the `Factory`.<br/>
-        User styles can still be applied over custom shapes/markers.<br/>
-        Nodes 1 and 3 also have a double click callback attached to them.
+        Custom shapes and markers can be used by simply registering them
+        with the `Factory`.<br />
+        User styles can still be applied over custom shapes/markers.<br />
+        Nodes 1 and 3 also have a double click callback attached to them.<br/>
+        the node width/height can be explicitly specified to change size of node.<br/>
       </div>
     </div>
   );

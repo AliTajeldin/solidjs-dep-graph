@@ -7,6 +7,8 @@ import { labelStyle } from "./styles";
 
 export interface NodeOptions {
   shape?: string;
+  width?: number;
+  height?: number;
   dblClickCB?: (n: Node, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
@@ -14,6 +16,8 @@ export interface NodeOptions {
 
 const defaultNodeOptions: NodeOptions = {
   shape: "rect",
+  width: undefined,
+  height: undefined,
   dblClickCB: undefined,
   shapeStyle: {},
   labelStyle: {},
@@ -36,13 +40,10 @@ export class Node {
 
     this.x = 0;
     this.y = 0;
-    [this.width, this.height] = this.computeSize();
+    this.width = nodeOptions.width || (22 + 6.0 * this.label.length);
+    this.height = nodeOptions.height || 30;
 
     this.nodeOptions = defaultsDeep({}, nodeOptions, defaultNodeOptions);
-  }
-
-  computeSize() {
-    return [22 + 6.0 * this.label.length, 30]
   }
 
   renderShape() {
