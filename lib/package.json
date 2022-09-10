@@ -1,6 +1,6 @@
 {
   "name": "solidjs-dep-graph",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Ali Tajeldin",
   "description": "dependency graphs in solidjs",
   "main": "./dist/solid-dep-graph.umd.cjs",
@@ -41,6 +41,6 @@
     "dagre": "^0.8.5",
     "kld-intersections": "^0.7.0",
     "lodash-es": "^4.17.21",
-    "solid-js": "1.4.7"
+    "solid-js": "^1.5.4"
   }
 }
