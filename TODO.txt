@@ -21,4 +21,4 @@
    * callbacks example
    * multi-graph (to show independent state)
 * add support for additional layout algorithms (e.g. ELK, force, etc)
-* add support for image nodes.
+* add support for image nodes. NOW only add doc!

@@ -9,6 +9,7 @@ export interface NodeOptions {
   shape?: string;
   width?: number;
   height?: number;
+  imageUrl?: string;
   dblClickCB?: (n: Node, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
@@ -48,15 +49,14 @@ export class Node {
 
   renderShape() {
     const shape = Factory.getShape(this.nodeOptions.shape);
-    return shape.render(this.width, this.height, this.nodeOptions.shapeStyle);
+    return shape.render(this.width, this.height, this.nodeOptions.shapeStyle, this.nodeOptions);
   }
 
   renderLabel() {
     return (
       <text dominant-baseline="middle" text-anchor="middle" style={{
-        "font-weight": 100, // doesn't work if added to labelStyle!!!
         ...labelStyle,
-        ...this.nodeOptions.labelStyle
+        ...(this.nodeOptions.labelStyle as any)
       }}>
         {this.label}
       </text>

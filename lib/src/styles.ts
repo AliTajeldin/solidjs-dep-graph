@@ -34,6 +34,7 @@ export const labelStyle = {
   "font-size": "0.75rem",
   // "font-weight": "lighter",
   "line-height": "1rem", // TODO: is this right!
+  "font-weight": 100,
   "stroke": colors.gray15,
   "user-select": "none",
 }

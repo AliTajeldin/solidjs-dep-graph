@@ -1,6 +1,5 @@
-import { ShapeInfo, Shapes } from "kld-intersections";
 import { Node, Edge, Graph, colors, PathShape } from "solidjs-dep-graph";
-import { Shape, StylePropsT, shapeStyle, Factory } from "solidjs-dep-graph";
+import { Factory } from "solidjs-dep-graph";
 import { MarkerProps, markerStyle } from "solidjs-dep-graph";
 import c from '../style.module.css';
 
@@ -43,7 +42,7 @@ export default function CustomExample() {
   const cb = (n: Node) => { console.log("Double click:", n.id); }
 
   const nodes: Node[] = [
-    new Node("1", "Node 1", { dblClickCB: cb }),
+    new Node("1", "", { shape: "image", imageUrl: "/linux.png", height: 30, width:30, dblClickCB: cb }),
     new Node("2", "Node 2", { shape: "house", shapeStyle: { fill: colors.blue2, } }),
     new Node("3", "Node 3", { dblClickCB: cb }),
     new Node("4", "Node 4", { width: 100, height: 50, shape: "house" }),
@@ -56,7 +55,7 @@ export default function CustomExample() {
     }),
     new Edge("2", "4"),
   ];
-
+  
   return (
     <div class={c.demoArea} style="margin: 25px">
       <Graph nodes={nodes} edges={edges} />
