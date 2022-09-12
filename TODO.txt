@@ -8,7 +8,6 @@
 * make pan/zoom an option (on by default)
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
-* add support for multi-directional ("to" [default], "from", "both" for arrow type)
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
 * add maxWidth, maxHeight, and fitToSize attributes to Graph Component. How best to do this!
 * turn on minify in lib/demo build before publish!
@@ -16,3 +15,5 @@
    * multi-graph (to show independent state)
 * add support for additional layout algorithms (e.g. ELK, force, etc)
 * make arrow and actual arrow and make current arrow triangle.
+* add graphOptions for top level SVG attributes.
+
