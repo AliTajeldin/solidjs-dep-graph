@@ -1,6 +1,6 @@
 {
   "name": "solidjs-dep-graph",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Ali Tajeldin",
   "description": "dependency graphs in solidjs",
   "main": "./dist/solid-dep-graph.umd.cjs",
