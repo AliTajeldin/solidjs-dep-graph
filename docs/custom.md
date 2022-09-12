@@ -69,7 +69,7 @@ Factory.registerMarker("mymarker", MyMarkder);
 ```
 Once registered, the custom marker can be utilized in the same manner as any built-in marker:
 ```typescript
-new Edge("N1", "N2", {endMarkerType: "mymarker"});
+new Edge("N1", "N2", {markerEnd: "mymarker"});
 ```
 
 ## Example Custom Marker

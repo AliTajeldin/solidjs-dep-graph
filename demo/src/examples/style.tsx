@@ -15,12 +15,12 @@ export default function StyleExample() {
     }),
   ];
   const edges: Edge[] = [
-    new Edge("1", "2", { endMarkerType: "circle" }),
+    new Edge("1", "2", { markerEnd: "circle" }),
     new Edge("2", "3", {
       edgeStyle: { stroke: "red" },
       markerStyle: { stroke: "yellow", fill: "green" }
     }),
-    new Edge("2", "4", { endMarkerType: "none" }),
+    new Edge("2", "4", { markerEnd: "none" }),
   ];
 
   return (

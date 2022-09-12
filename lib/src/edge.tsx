@@ -5,13 +5,15 @@ import { Factory } from "./factory";
 import { edgeStyle } from "./styles";
 
 export interface EdgeOptions {
-  endMarkerType?: string,
+  markerStart?: string,
+  markerEnd?: string,
   edgeStyle?: StylePropsT,
   markerStyle?: StylePropsT,
 };
 
 const defaultEdgeOptions: EdgeOptions = {
-  endMarkerType: "arrow",
+  markerStart: "none",
+  markerEnd: "arrow",
   edgeStyle: {},
   markerStyle: {},
 }
@@ -33,8 +35,11 @@ export class Edge {
   }
 
   render(): JSXElement {
-    const Marker = Factory.getMarker(this.edgeOptions.endMarkerType);
-    const markerId = `sdg-marker-${this.id}`;
+    const MarkerStart = Factory.getMarker(this.edgeOptions.markerStart);
+    const MarkerEnd = Factory.getMarker(this.edgeOptions.markerEnd);
+    const markerStartId = `sdg-marker-start-${this.id}`;
+    const markerEndId = `sdg-marker-end-${this.id}`;
+  
     const move = `M ${this.points[0].x},${this.points[0].y}`;
     const lines = this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
@@ -42,10 +47,15 @@ export class Edge {
       ...edgeStyle,
       ...this.edgeOptions.edgeStyle,
     }}>
-      <path d={`${move} ${lines}`} marker-end={`url(#${markerId}`} />
-      <Show when={Marker !== null}>
+      <path d={`${move} ${lines}`} marker-start={`url(#${markerStartId}`} marker-end={`url(#${markerEndId}`} />
+      <Show when={MarkerStart !== null}>
         <defs>
-          <Marker id={markerId} markerStyle={this.edgeOptions.markerStyle} />
+          <MarkerStart id={markerStartId} markerStyle={this.edgeOptions.markerStyle} />
+        </defs>
+      </Show>
+      <Show when={MarkerEnd !== null}>
+        <defs>
+          <MarkerEnd id={markerEndId} markerStyle={this.edgeOptions.markerStyle} />
         </defs>
       </Show>
     </g>

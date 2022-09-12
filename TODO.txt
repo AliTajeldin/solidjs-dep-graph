@@ -1,24 +1,18 @@
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
 * remove TBD from readme and add blurp about example directory instead.
-* add height/width override to node. (not to be computed based on string length)
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
    OR, use @solid-primitives/resize-observer for a solidjs specific answer.
 * add option for "ranker" layout options (e.g. "network-simplex", "tight-tree", "longest-path")
 * scale graph to fit view port if graph is too big or always or none.  Or just add a fit() method
 * should do pan by button down/up so only handle move when button is down.
 * make pan/zoom an option (on by default)
-* Node add a get width() getter that calls computeWidth() that would lazy eval
-   the computed width based on input params
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
 * add support for multi-directional ("to" [default], "from", "both" for arrow type)
-* add example/demo with node/edge factory (e.g. BlueNode(t,f) which creates a blue node)
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
-* publish the library
-* add maxWidth, maxHeight, and fitToSize attributes to Graph Component
+* add maxWidth, maxHeight, and fitToSize attributes to Graph Component. How best to do this!
 * turn on minify in lib/demo build before publish!
 * Examples to add:
-   * callbacks example
    * multi-graph (to show independent state)
 * add support for additional layout algorithms (e.g. ELK, force, etc)
-* add support for image nodes. NOW only add doc!
+* make arrow and actual arrow and make current arrow triangle.

@@ -46,6 +46,7 @@ interface NodeOptions {
   shape?: string;
   width?: number;
   height?: number;
+  imageUrl?: string;
   dblClickCB?: (n: Node, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
@@ -53,6 +54,7 @@ interface NodeOptions {
 ```
 * `shape` : the id of the builtin or registered custom shape. (Default "rect")
 * `width`/`height` : override heruistic to compute width/height with explict user specified width/height in pixels.
+* `imageUrl` : if node type is "image", then this field has to be specified to indicate the url of the image source.
 * `dbClickCB` : a callback function that is called when user double clicks on a node. The callback is provide the `Node` instance that was clicked and the double click event as parameters.
 * `shapeStyle` : style override of default shape style (e.g. can specify color, fill, stroke, etc.)
 * `labelStyle` : style override of node label style (e.g. font size, type, color, etc.)
@@ -73,12 +75,13 @@ new Edge(from, to, edge_options)
 ## Edge options
 ```typescript
 interface EdgeOptions {
-  endMarkerType?: string,
+  markerStart?: string,
+  markerEnd?: string,
   edgeStyle?: StylePropsT,
   markerStyle?: StylePropsT,
 };
 ```
-* `endMarkerType` : built-in or custom marker used for the edge destination node.
+* `markerStart`/`markerEnd` : built-in or custom marker used for the edge source/destination node. Defaults to 'none'/'arrow' respectively.
 * `edgeStyle` : style override of default edge style (e.g. can specify color, stroke, dash pattern, etc.)
 * `markerStyle` : style override of node label style (e.g. font size, type, color, etc.)
 
