@@ -12,8 +12,15 @@ interface GraphOptions {
   nodes: Node[];
   edges: Edge[];
   layoutOptions?: LayoutOptions;
+  svgStyle?: StylePropsT;
 }
 ```
+
+`nodes` and `edges` must be specified and denote the list of nodes and the edges that connect them.
+They must be instances of `Node` and `Edge` classes or their derivatives respectively.
+
+The `svgStyle` optional style can be used to override the style of the top level `svg` element rendered by the graph.
+For example, to turn off the border, pass `svgStyle={{"border-width":0}}` as a prop argument.
 
 ## Graph Layout options
 All layout options are optional

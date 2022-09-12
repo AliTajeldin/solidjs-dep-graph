@@ -16,7 +16,8 @@
   background-color: rgb(29, 30, 33);
   width: 100vw;
   height: 100vh;
-  display: flow-root;
+  display: flex;
+  flex-direction: column;
 }
 
 .navArea {

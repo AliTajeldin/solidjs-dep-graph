@@ -58,14 +58,17 @@ export default function CustomExample() {
   ];
   
   return (
-    <div class={c.demoArea} style="margin: 25px">
-      <Graph nodes={nodes} edges={edges} />
+    <div class={c.demoArea} style="margin: 25px; flex-grow:1">
+      <Graph nodes={nodes} edges={edges} svgStyle={{height:"100%"}}/>
       <div class={c.demoDescription}>
-        Custom shapes and markers can be used by simply registering them
-        with the `Factory`.<br />
-        User styles can still be applied over custom shapes/markers.<br />
-        Nodes 1 and 3 also have a double click callback attached to them.<br/>
-        the node width/height can be explicitly specified to change size of node.<br/>
+        This example demonstrates various ways graph can be customized.
+        <ul>
+          <li>Custom shapes and markers can be used by simply registering them with the <code>Factory</code></li>
+          <li>User styles can still be applied over custom shapes/markers</li>
+          <li>Nodes 1 and 3 also have a double click callback attached to them</li>
+          <li>the node width/height can be explicitly specified to change size of node</li>
+          <li><code>svgStyle</code> can be set on graph to affect style of entire graph (e.g. expand to fill screen as shown here)</li>
+        </ul>
       </div>
     </div>
   );

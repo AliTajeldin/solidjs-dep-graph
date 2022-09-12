@@ -4,6 +4,7 @@ import { Edge } from "./edge";
 // import { renderDebugMsg, showMouseEvent } from "./debug-msg";
 import { dagreLayout, LayoutOptions } from "./dagre-layout";
 import { borderStyle } from "./styles";
+import { StylePropsT } from "./types";
 
 export type { LayoutOptions };
 
@@ -17,6 +18,7 @@ export interface GraphOptions {
   nodes: Node[];
   edges: Edge[];
   layoutOptions?: LayoutOptions;
+  svgStyle?: StylePropsT;
 }
 
 export function Graph(props: GraphOptions) {
@@ -79,7 +81,7 @@ export function Graph(props: GraphOptions) {
         preserveAspectRatio="none"
         pointer-events="visible"
         onMouseMove={handleMouseMove} onWheel={handleWheel}
-        style={borderStyle}
+        style={{ ...borderStyle, ...(props.svgStyle || {}) }}
       >
         <rect class="pointer-target" width="100%" height="100%" style="fill: transparent" />
         <g pointer-events="none"
