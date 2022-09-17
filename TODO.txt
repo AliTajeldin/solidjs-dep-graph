@@ -9,7 +9,6 @@
 * Node add hover tool tip with extra info.
 * add support for HTML nodes
 * Add title to graph??? (this could even be a signal from caller.  Reading the prop will just work!!!)
-* add maxWidth, maxHeight, and fitToSize attributes to Graph Component. How best to do this!
 * turn on minify in lib/demo build before publish!
 * Examples to add:
    * multi-graph (to show independent state)

@@ -2,7 +2,7 @@ import { createMemo, createSignal, For, JSX, Show } from "solid-js";
 import { Node } from "./node";
 import { Edge } from "./edge";
 // import { renderDebugMsg, showMouseEvent } from "./debug-msg";
-import { dagreLayout, LayoutOptions } from "./dagre-layout";
+import { dagreLayout, LayoutOptions, DEFAULT_LAYOUT_OPTIONS } from "./dagre-layout";
 import { borderStyle } from "./styles";
 import { StylePropsT } from "./types";
 
@@ -14,6 +14,7 @@ interface PanZoom {
   yOffset: number,
 };
 
+//TODO: remove GraphOptions.
 export interface GraphOptions {
   nodes: Node[];
   edges: Edge[];
@@ -21,7 +22,52 @@ export interface GraphOptions {
   svgStyle?: StylePropsT;
 }
 
-export function Graph(props: GraphOptions) {
+
+// wrapper around createSignal to use get/set instead of array return.
+function Signal<T>(v: T) {
+  const [getSig, setSig] = createSignal(v);
+
+  return {
+    get: getSig,
+    set: setSig,
+  }
+}
+
+export class Graph {
+  nodes: Node[];
+  edges: Edge[];
+  layoutOptions: LayoutOptions = DEFAULT_LAYOUT_OPTIONS;
+  svgStyle: StylePropsT = {};
+
+  panZoom = Signal({
+    scale: 1,
+    xOffset: 0,
+    yOffset: 0,
+  });
+
+  constructor(nodes: Node[], edges: Edge[]) {
+    this.nodes = nodes;
+    this.edges = edges;
+  }
+
+  setLayoutOptions(layoutOptions: LayoutOptions) {
+    this.layoutOptions = Object.assign({}, this.layoutOptions, layoutOptions);
+    return this;
+  }
+
+  setSvgStyle(svgStyle: StylePropsT) {
+    this.svgStyle = svgStyle;
+    return this;
+  }
+
+  render() {
+    return <GraphComp nodes={this.nodes} edges={this.edges} layoutOptions={this.layoutOptions} svgStyle={this.svgStyle} />
+  }
+}
+
+
+// TODO: move GraphComp inside the Graph class render method.
+function GraphComp(props: GraphOptions) {
   const [pz, setPanZoom] = createSignal({
     scale: 1,
     xOffset: 0,
@@ -75,6 +121,7 @@ export function Graph(props: GraphOptions) {
   // renders the nodes and edges of the graph.
   // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
   // without such rect, svg will only get pointer events on painted nodes/edges.
+  // TODO: change watch of when to something  like signal layoutComplete()
   return (
     <Show when={size()}>
       <svg {...size()}

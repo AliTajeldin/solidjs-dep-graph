@@ -18,9 +18,10 @@ export default function BasicExample() {
     new Edge("1", "6",),
   ]; 
 
+  const graph = new Graph(nodes, edges);
   return (
     <div class={c.demoArea} style="margin: 25px">
-      <Graph nodes={nodes} edges={edges}/>
+      {graph.render()}
       <div class={c.demoDescription}>
         An example of simplest graph.<br/>Only two properties are required to be specified:
         <ul>

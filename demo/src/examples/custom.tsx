@@ -1,4 +1,4 @@
-import { Node, Edge, Graph, colors, PathShape } from "solidjs-dep-graph";
+import { Node, Edge, colors, PathShape, Graph } from "solidjs-dep-graph";
 import { Factory } from "solidjs-dep-graph";
 import { MarkerProps, markerStyle } from "solidjs-dep-graph";
 import c from '../style.module.css';
@@ -57,9 +57,13 @@ export default function CustomExample() {
     new Edge("2", "4"),
   ];
   
+  const graph = new Graph(nodes, edges)
+    .setLayoutOptions({rankdir:"TB"})
+    .setSvgStyle({height:"100%"});
+
   return (
     <div class={c.demoArea} style="margin: 25px; flex-grow:1">
-      <Graph nodes={nodes} edges={edges} svgStyle={{height:"100%"}}/>
+      {graph.render()}
       <div class={c.demoDescription}>
         This example demonstrates various ways graph can be customized.
         <ul>
