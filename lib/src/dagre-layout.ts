@@ -3,7 +3,6 @@ import { Node } from "./node";
 import { Edge } from "./edge";
 import { Size } from "./types";
 
-// TODO: move this closer to where it is defined!
 export interface LayoutOptions {
   rankdir?: string,
   marginx?: number,
@@ -12,7 +11,7 @@ export interface LayoutOptions {
   nodesep?: number,
 };
 
-const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
+export const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
   marginx: 20,
   marginy: 20,
   rankdir: 'LR',
@@ -36,8 +35,7 @@ export function dagreLayout(
     return undefined;
   }
 
-  const layoutOptions: InternalLayoutOptions = Object.assign(
-    {}, DEFAULT_LAYOUT_OPTIONS, userLayoutOptions ? userLayoutOptions : {});
+  const layoutOptions: InternalLayoutOptions = {...userLayoutOptions};
   const graph = new graphlib.Graph();
   graph.setGraph(layoutOptions);
 
