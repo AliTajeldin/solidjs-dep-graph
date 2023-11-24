@@ -1,5 +1,5 @@
 export { Graph } from './graph';
-export type { GraphOptions, LayoutOptions } from './graph';
+export type { LayoutOptions } from './graph';
 export { Node } from './node';
 export { Edge } from './edge';
 export type { MarkerProps, MarkerComponent } from './markers';

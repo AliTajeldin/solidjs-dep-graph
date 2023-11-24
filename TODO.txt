@@ -1,3 +1,4 @@
+* show code of example in the example itself.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
 * remove TBD from readme and add blurp about example directory instead.
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
@@ -15,4 +16,7 @@
 * add support for additional layout algorithms (e.g. ELK, force, etc)
 * make arrow and actual arrow and make current arrow triangle.
 * add graphOptions for top level SVG attributes.
+* allow option for <GraphComp nodes={} edges={}> rather than just class instance.
+* make Node/Edge function constructors to avoid "new Node"...
+
 
