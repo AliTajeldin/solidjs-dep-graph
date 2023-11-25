@@ -2259,7 +2259,7 @@ function A(props) {
   })();
 }
 
-const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
+const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/solidjs-dep-graph/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
     // @ts-expect-error true will be replaced with boolean later
     if (!true || !deps || deps.length === 0) {
         return baseModule();
@@ -2319,16 +2319,16 @@ const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/"+d
 
 const routes = [{
   path: "/",
-  component: lazy(() => __vitePreload(() => import('./basic-3f9c7c62.js'),true?["assets/basic-3f9c7c62.js","assets/edge-19d34e3b.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./basic-4d5c5b85.js'),true?["assets/basic-4d5c5b85.js","assets/edge-15b6c646.js"]:void 0))
 }, {
   path: "/style",
-  component: lazy(() => __vitePreload(() => import('./style-24d78645.js'),true?["assets/style-24d78645.js","assets/edge-19d34e3b.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./style-06a91939.js'),true?["assets/style-06a91939.js","assets/edge-15b6c646.js"]:void 0))
 }, {
   path: "/custom",
-  component: lazy(() => __vitePreload(() => import('./custom-56311a81.js'),true?["assets/custom-56311a81.js","assets/edge-19d34e3b.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./custom-af66f7f2.js'),true?["assets/custom-af66f7f2.js","assets/edge-15b6c646.js"]:void 0))
 }, {
   path: "/resource",
-  component: lazy(() => __vitePreload(() => import('./resource-70a6c90f.js'),true?["assets/resource-70a6c90f.js","assets/edge-19d34e3b.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./resource-ea0d63b6.js'),true?["assets/resource-ea0d63b6.js","assets/edge-15b6c646.js"]:void 0))
 }];
 
 const mainContainer = "_mainContainer_iwxps_15";

@@ -1,5 +1,5 @@
-import { i as insert, c as createRenderEffect, a as c, b as className, t as template } from './index-460cd86f.js';
-import { N as Node, E as Edge, G as Graph } from './edge-19d34e3b.js';
+import { i as insert, c as createRenderEffect, a as c, b as className, t as template } from './index-0f4e8857.js';
+import { N as Node, E as Edge, G as Graph } from './edge-15b6c646.js';
 
 const _tmpl$ = /*#__PURE__*/template(`<div style=margin:25px><div>Shape, label, and marker sytling can be overriden by user by specifying<br>\`shapeStyle\`, \`labelStyle\`, and \`markerStyle\` properties respectively.`);
 function StyleExample() {
