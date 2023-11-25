@@ -1,13 +1,16 @@
 {
   "name": "solidjs-dep-graph-demo",
-  "version": "0.0.1",
+  "version": "0.2.0",
+  "homepage": "https://AliTajeldin.github.io/solidjs-dep-graph",
   "description": "dependency graphs in solidjs",
   "license": "APACHE",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "clobber": "rm -rf node_modules dist"
+    "clean" : "rm -rf dist",
+    "clobber": "rm -rf node_modules dist",
+    "deploy" : "pnpm clean && pnpm build && gh-pages -d dist"
   },
   "type": "module",
   "devDependencies": {

@@ -14,4 +14,5 @@ export default defineConfig({
     target: 'esnext',
     minify: false
   },
+  base: '/solidjs-dep-graph/',
 });

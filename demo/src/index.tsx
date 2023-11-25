@@ -14,7 +14,7 @@ export const App = () => {
 }
 
 render(() => (
-  <Router>
+  <Router base="solidjs-dep-graph">
     <App />
   </Router>),
   document.getElementById('root') as HTMLElement);

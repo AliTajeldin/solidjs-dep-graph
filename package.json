@@ -7,8 +7,10 @@
     "dev": "cd ./demo && pnpm dev",
     "build": "pnpm -r build",
     "preview": "cd ./demo && pnpm preview",
+    "clean": "rm -rf dist demo/dist lib/dist",
     "clobber": "rm -rf node_modules dist && pnpm run -r clobber",
-    "release": "cd ./lib && pnpm build && pnpm release"
+    "release": "cd ./lib && pnpm build && pnpm release",
+    "deploy" : "cd ./demo && pnpm run deploy"
   },
   "engines": {
     "node": ">=14"

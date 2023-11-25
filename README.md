@@ -4,6 +4,8 @@
 
 SolidJS component for rendering a dependency graph layout using Dagre layout
 
+[Examples Demo](https://alitajeldin.github.io/solidjs-dep-graph/)
+
 # Getting started
 
 Install solidjs-dep-graph using npm, pnpm, or yarn.

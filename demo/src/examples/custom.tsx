@@ -42,7 +42,7 @@ export default function CustomExample() {
   const cb = (n: Node) => { console.log("Double click:", n.id); }
 
   const nodes: Node[] = [
-    new Node("1", "", { shape: "image", imageUrl: "/linux.png", height: 30, width:30, dblClickCB: cb }),
+    new Node("1", "", { shape: "image", imageUrl: "/solidjs-dep-graph/linux.png", height: 30, width:30, dblClickCB: cb }),
     new Node("2", "Node 2", { shape: "house", shapeStyle: { fill: colors.blue2, } }),
     new Node("3", "Node 3", { dblClickCB: cb }),
     new Node("4", "Node 4", { width: 100, height: 50, shape: "house" }),
