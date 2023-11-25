@@ -1,7 +1,5 @@
 import { Node, Edge, Graph } from "solidjs-dep-graph";
-import { Code } from '../code';
 import c from '../style.module.css';
-
 
 export default function BasicExample() {
   const nodes: Node[] = [
@@ -30,7 +28,6 @@ export default function BasicExample() {
           <li>nodes: array of Node objects</li>
           <li>edges: array of Edge objects</li>
         </ul>
-        <Code example="basic"/>
       </div>
     </div>
   );

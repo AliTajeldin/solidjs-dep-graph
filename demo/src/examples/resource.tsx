@@ -28,7 +28,7 @@ export default function ResourceExample() {
   const [graph] = createResource(fetchGraphInfo);
 
   return (
-    <div class={c.demoArea} style="margin: 25px">
+    <div class={c.demoArea}>
       <Show when={graph.state === "ready"} fallback={<p>Loading...</p>}>
         {graph().render()}
       </Show>

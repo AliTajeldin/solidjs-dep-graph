@@ -8,9 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "clean" : "rm -rf dist",
+    "clean": "rm -rf dist",
     "clobber": "rm -rf node_modules dist",
-    "deploy" : "pnpm clean && pnpm build && gh-pages -d dist"
+    "deploy": "pnpm clean && pnpm build && gh-pages -d dist"
   },
   "type": "module",
   "devDependencies": {
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.9.1",
+    "highlight.js": "^11.9.0",
     "kld-intersections": "^0.7.0",
     "solid-js": "^1.8.6",
     "solidjs-dep-graph": "workspace:*"

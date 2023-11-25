@@ -26,7 +26,7 @@ export default function StyleExample() {
   const graph = new Graph(nodes, edges);
   
   return (
-    <div class={c.demoArea} style="margin: 25px">
+    <div class={c.demoArea}>
       {graph.render()}
       <div class={c.demoDescription}>
         Shape, label, and marker sytling can be overriden by user by specifying<br/>

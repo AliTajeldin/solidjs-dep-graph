@@ -19,6 +19,7 @@ const defaultNodeOptions: NodeOptions = {
   shape: "rect",
   width: undefined,
   height: undefined,
+  imageUrl: undefined,
   dblClickCB: undefined,
   shapeStyle: {},
   labelStyle: {},

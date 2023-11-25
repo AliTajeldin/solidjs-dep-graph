@@ -62,7 +62,7 @@ export default function CustomExample() {
     .setSvgStyle({height:"100%"});
 
   return (
-    <div class={c.demoArea} style="margin: 25px; flex-grow:1">
+    <div class={c.demoArea} style="flex-grow:1">
       {graph.render()}
       <div class={c.demoDescription}>
         This example demonstrates various ways graph can be customized.
