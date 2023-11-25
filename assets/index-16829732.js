@@ -2319,16 +2319,16 @@ const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/sol
 
 const routes = [{
   path: "/",
-  component: lazy(() => __vitePreload(() => import('./basic-4d5c5b85.js'),true?["assets/basic-4d5c5b85.js","assets/edge-15b6c646.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./basic-3b72d6a4.js'),true?["assets/basic-3b72d6a4.js","assets/edge-b6fb13c8.js"]:void 0))
 }, {
   path: "/style",
-  component: lazy(() => __vitePreload(() => import('./style-06a91939.js'),true?["assets/style-06a91939.js","assets/edge-15b6c646.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./style-ba29e80d.js'),true?["assets/style-ba29e80d.js","assets/edge-b6fb13c8.js"]:void 0))
 }, {
   path: "/custom",
-  component: lazy(() => __vitePreload(() => import('./custom-af66f7f2.js'),true?["assets/custom-af66f7f2.js","assets/edge-15b6c646.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./custom-2554c9ff.js'),true?["assets/custom-2554c9ff.js","assets/edge-b6fb13c8.js"]:void 0))
 }, {
   path: "/resource",
-  component: lazy(() => __vitePreload(() => import('./resource-ea0d63b6.js'),true?["assets/resource-ea0d63b6.js","assets/edge-15b6c646.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./resource-a93a61c1.js'),true?["assets/resource-a93a61c1.js","assets/edge-b6fb13c8.js"]:void 0))
 }];
 
 const mainContainer = "_mainContainer_iwxps_15";
@@ -2393,6 +2393,7 @@ const App = () => {
   })();
 };
 render(() => createComponent(Router, {
+  base: "solidjs-dep-graph",
   get children() {
     return createComponent(App, {});
   }
