@@ -1,5 +1,5 @@
-import { e as createResource, i as insert, f as createComponent, S as Show, c as createRenderEffect, a as c, b as className, t as template } from './index-16829732.js';
-import { N as Node, E as Edge, G as Graph } from './edge-b6fb13c8.js';
+import { e as createResource, i as insert, f as createComponent, S as Show, c as createRenderEffect, a as c, b as className, t as template } from './index-36a0bc71.js';
+import { N as Node, E as Edge, G as Graph } from './edge-3de3cc88.js';
 
 const _tmpl$ = /*#__PURE__*/template(`<div style=margin:25px><div>An example of graph info being loaded as a resource.<br>an explicit 1 sec delay is added to the fetch to simulate<br>a real fetch operation.<br>`),
   _tmpl$2 = /*#__PURE__*/template(`<p>Loading...`);

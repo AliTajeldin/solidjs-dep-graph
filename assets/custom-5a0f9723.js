@@ -1,5 +1,5 @@
-import { c as createRenderEffect, s as setAttribute, d as style, t as template, i as insert, a as c, b as className } from './index-16829732.js';
-import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, m as markerStyle } from './edge-b6fb13c8.js';
+import { c as createRenderEffect, s as setAttribute, d as style, t as template, i as insert, a as c, b as className } from './index-36a0bc71.js';
+import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, m as markerStyle } from './edge-3de3cc88.js';
 
 const _tmpl$$1 = /*#__PURE__*/template(`<svg><path></svg>`, false, true);
 
@@ -77,7 +77,7 @@ function CustomExample() {
   };
   const nodes = [new Node("1", "", {
     shape: "image",
-    imageUrl: "/linux.png",
+    imageUrl: "/solidjs-dep-graph/linux.png",
     height: 30,
     width: 30,
     dblClickCB: cb
