@@ -65,7 +65,7 @@ Factory.registerMarker(<marker id>, <marker function>);
 ```
 For example:
 ```typescript
-Factory.registerMarker("mymarker", MyMarkder);
+Factory.registerMarker("mymarker", MyMarker);
 ```
 Once registered, the custom marker can be utilized in the same manner as any built-in marker:
 ```typescript

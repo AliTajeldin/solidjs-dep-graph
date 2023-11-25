@@ -1,4 +1,4 @@
-* show code of example in the example itself.
+* show code of example in the example itself. (with syntax highlighting)
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
 * remove TBD from readme and add blurp about example directory instead.
 * add resize handler window.onResize and get innnerHeight/Width of enclosing window!
