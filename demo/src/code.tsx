@@ -1,9 +1,9 @@
-import { createResource, Show } from "solid-js";
-// import hljs from 'highlight.js';
-
+import { createResource, createSignal, Show } from "solid-js";
+import c from './style.module.css';
 import hljs from 'highlight.js/lib/core';
-import typescript from 'highlight.js/lib/languages/typescript'; 
-import xml from 'highlight.js/lib/languages/xml'; 
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('xml', xml);
 
@@ -22,8 +22,6 @@ async function fetchCode(example: string): Promise<string> {
     // ignoreIllegals: false,
   }).value;
 
-  // console.log("html:", htmlCode);
-
   return htmlCode;
 }
 
@@ -31,16 +29,30 @@ interface CodeProps {
   example: string;
 }
 
-export const Code = (props: CodeProps) => {
+const HtmlCode = (props: CodeProps) => {
   const [htmlCode] = createResource("basic", fetchCode);
 
   return (
     <Show when={htmlCode.state === "ready"} fallback={<p>Loading...</p>}>
       <pre>
-        <code
-          innerHTML={htmlCode()}
-        />
+        <code innerHTML={htmlCode()} />
       </pre>
     </Show>
   );
+}
+
+export const Code = (props: CodeProps) => {
+  const [showCode, setShowCode] = createSignal(false);
+  const buttonLabel = () => {
+    return showCode() ? "Hide Code" : "Show Code";
+  }
+
+  return (
+    <>
+      <button class={c.navLink} onClick={() => setShowCode(c=>!c)}>{buttonLabel()}</button>
+      <Show when={showCode()}>
+        <HtmlCode example={props.example}/>
+      </Show>
+    </>
+  )
 }
