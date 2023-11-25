@@ -41,6 +41,6 @@
     "dagre": "^0.8.5",
     "kld-intersections": "^0.7.0",
     "lodash-es": "^4.17.21",
-    "solid-js": "^1.5.4"
+    "solid-js": "^1.8.6"
   }
 }

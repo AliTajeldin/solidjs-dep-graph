@@ -34,7 +34,7 @@ importers:
       dagre: ^0.8.5
       kld-intersections: ^0.7.0
       lodash-es: ^4.17.21
-      solid-js: ^1.5.4
+      solid-js: ^1.8.6
       typescript: ^4.6.2
       vite: ^3.0.4
       vite-plugin-dts: ^1.4.1
@@ -43,7 +43,7 @@ importers:
       dagre: 0.8.5
       kld-intersections: 0.7.0
       lodash-es: 4.17.21
-      solid-js: 1.5.4
+      solid-js: 1.8.6
     devDependencies:
       '@types/dagre': 0.7.48
       '@types/graphlib': 2.1.8
@@ -51,7 +51,7 @@ importers:
       typescript: 4.8.2
       vite: 3.0.9
       vite-plugin-dts: 1.4.1_vite@3.0.9
-      vite-plugin-solid: 2.3.0_solid-js@1.5.4+vite@3.0.9
+      vite-plugin-solid: 2.3.0_solid-js@1.8.6+vite@3.0.9
 
 packages:
 
@@ -1320,6 +1320,10 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
+  /seroval/0.14.1:
+    resolution: {integrity: sha512-ZlC9y1KVDhZFdEHLYZup1RjKDutyX1tt3ffOauqRbRURa2vRr2NU/bHuVEuNEqR3zE2uCU3WM6LqH6Oinc3tWg==}
+    engines: {node: '>=10'}
+
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -1330,6 +1334,12 @@ packages:
     dependencies:
       csstype: 3.1.0
 
+  /solid-js/1.8.6:
+    resolution: {integrity: sha512-yiH6ZfBBZ3xj/aU/PBpVKB+8r8WWp100NGF7k/Z0IrK9Y8Lv0jwvFiJY1cHdc6Tj7GqXArKnMBabM0m1k+LzkA==}
+    dependencies:
+      csstype: 3.1.0
+      seroval: 0.14.1
+
   /solid-refresh/0.4.1_solid-js@1.5.4:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
@@ -1339,6 +1349,17 @@ packages:
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.18.13
       solid-js: 1.5.4
+    dev: true
+
+  /solid-refresh/0.4.1_solid-js@1.8.6:
+    resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
+    peerDependencies:
+      solid-js: ^1.3
+    dependencies:
+      '@babel/generator': 7.18.13
+      '@babel/helper-module-imports': 7.18.6
+      '@babel/types': 7.18.13
+      solid-js: 1.8.6
     dev: true
 
   /source-map-js/1.0.2:
@@ -1499,6 +1520,23 @@ packages:
       merge-anything: 5.0.4
       solid-js: 1.5.4
       solid-refresh: 0.4.1_solid-js@1.5.4
+      vite: 3.0.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /vite-plugin-solid/2.3.0_solid-js@1.8.6+vite@3.0.9:
+    resolution: {integrity: sha512-N2sa54C3UZC2nN5vpj5o6YP+XdIAZW6n6xv8OasxNAcAJPFeZT7EOVvumL0V4c8hBz1yuYniMWdESY8807fVSg==}
+    peerDependencies:
+      solid-js: ^1.3.17
+      vite: ^3.0.0
+    dependencies:
+      '@babel/core': 7.18.13
+      '@babel/preset-typescript': 7.18.6_@babel+core@7.18.13
+      babel-preset-solid: 1.5.1_@babel+core@7.18.13
+      merge-anything: 5.0.4
+      solid-js: 1.8.6
+      solid-refresh: 0.4.1_solid-js@1.8.6
       vite: 3.0.9
     transitivePeerDependencies:
       - supports-color
