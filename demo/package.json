@@ -5,11 +5,11 @@
   "description": "dependency graphs in solidjs",
   "license": "APACHE",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "./tools/copy_examples.sh && vite",
+    "build": "./tools/copy_examples.sh && vite build",
+    "preview": "./tools/copy_examples.sh &&vite preview",
     "clean": "rm -rf dist",
-    "clobber": "rm -rf node_modules dist",
+    "clobber": "rm -rf node_modules dist public/examples",
     "deploy": "pnpm clean && pnpm build && gh-pages -d dist"
   },
   "type": "module",

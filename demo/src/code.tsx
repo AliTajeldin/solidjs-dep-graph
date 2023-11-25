@@ -3,6 +3,7 @@ import c from './style.module.css';
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import 'highlight.js/styles/night-owl.min.css';
 
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('xml', xml);
@@ -10,7 +11,7 @@ hljs.registerLanguage('xml', xml);
 async function fetchCode(example: string): Promise<string> {
   console.log("fetching code!");
 
-  const response = await fetch(`/solidjs-dep-graph/${example}.tsx`);
+  const response = await fetch(`/solidjs-dep-graph/examples/${example}.tsx`);
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }

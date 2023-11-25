@@ -4,7 +4,7 @@ import c from '../style.module.css';
 
 
 export default function BasicExample() {
-  const nodes: Node[] = [
+  const nodes = [
     new Node("1", "Node 1"),
     new Node("2", "Node 2"),
     new Node("3", "Node 3"),
@@ -12,7 +12,7 @@ export default function BasicExample() {
     new Node("5", "Node 5"),
     new Node("6", "Node 6"),
   ];
-  const edges: Edge[] = [
+  const edges = [
     new Edge("1", "2",),
     new Edge("2", "3",),
     new Edge("2", "4"),

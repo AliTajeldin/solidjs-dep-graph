@@ -1,5 +1,4 @@
 * make label an option for nodes/edges and use id as default label.
-* remove use of CDN for highlightjs styles.
 * show code of example in the example itself. (with syntax highlighting).  Note annotate the examples better.
 * add script/tool to update version of top/demo/lib package.json files together.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
@@ -21,5 +20,4 @@
 * add graphOptions for top level SVG attributes.
 * allow option for <GraphComp nodes={} edges={}> rather than just class instance.
 * make Node/Edge function constructors to avoid "new Node"...
-
 
