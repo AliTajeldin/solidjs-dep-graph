@@ -9,7 +9,7 @@
     "preview": "cd ./demo && pnpm preview",
     "clean": "rm -rf dist demo/dist lib/dist",
     "clobber": "rm -rf node_modules dist && pnpm run -r clobber",
-    "release": "cd ./lib && pnpm build && pnpm release",
+    "release": "cd ./lib && pnpm release",
     "deploy" : "cd ./demo && pnpm run deploy"
   },
   "engines": {

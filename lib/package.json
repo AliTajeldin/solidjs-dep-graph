@@ -1,6 +1,6 @@
 {
   "name": "solidjs-dep-graph",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Ali Tajeldin",
   "description": "dependency graphs in solidjs",
   "main": "./dist/solid-dep-graph.umd.cjs",
@@ -26,7 +26,7 @@
   "scripts": {
     "build": "vite build",
     "clobber": "rm -rf node_modules dist",
-    "release": "cp ../README.md . && npm publish && rm ./README.md"
+    "release": "pnpm build && cp ../README.md . && npm publish && rm ./README.md"
   },
   "devDependencies": {
     "@types/dagre": "^0.7.47",
