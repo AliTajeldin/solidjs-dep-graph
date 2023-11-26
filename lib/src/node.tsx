@@ -65,6 +65,7 @@ export class NodeC {
   }
 
   private _handleDblClick: JSX.EventHandler<SVGElement, MouseEvent> = (evt) => {
+    evt.preventDefault();
     this.nodeOptions.dblClickCB?.call(this, this, evt);
   }
 

@@ -72,7 +72,7 @@ export default function CustomExample() {
   return (
     <div class={c.demoArea} style="flex-grow:1">
       <Graph nodes={nodes} edges={edges}
-        layoutOptions={{ rankdir: "TB" }}
+        layoutOptions={{ layoutAlgo: "dagre", dagre: { rankdir: "TB" }}}
         svgStyle={{ height: "100%" }} />
 
       <Description example="custom" text={description} />

@@ -3,7 +3,7 @@ import { NodeC } from "./node";
 import { EdgeC } from "./edge";
 import { Size } from "./types";
 
-export interface LayoutOptions {
+export interface DagreLayoutOptionsI {
   rankdir?: string,
   marginx?: number,
   marginy?: number,
@@ -11,7 +11,7 @@ export interface LayoutOptions {
   nodesep?: number,
 };
 
-export const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
+const DEFAULT_LAYOUT_OPTIONS: DagreLayoutOptionsI = {
   marginx: 20,
   marginy: 20,
   rankdir: 'LR',
@@ -20,7 +20,7 @@ export const DEFAULT_LAYOUT_OPTIONS: LayoutOptions = {
 };
 
 // add width, height as they are added during layout by Dagre
-interface InternalLayoutOptions extends LayoutOptions {
+interface InternalLayoutOptions extends DagreLayoutOptionsI {
   width?: number,
   height?: number,
 };
@@ -28,14 +28,14 @@ interface InternalLayoutOptions extends LayoutOptions {
 export function dagreLayout(
   nodes: NodeC[],
   edges: EdgeC[],
-  userLayoutOptions: LayoutOptions
+  userLayoutOptions: DagreLayoutOptionsI
 ): Size | undefined {
 
   if (typeof(nodes) === "undefined" || typeof(edges) == "undefined") {
     return undefined;
   }
 
-  const layoutOptions: InternalLayoutOptions = {...userLayoutOptions};
+  const layoutOptions: InternalLayoutOptions = {...DEFAULT_LAYOUT_OPTIONS, ...userLayoutOptions};
   const graph = new graphlib.Graph();
   graph.setGraph(layoutOptions);
 

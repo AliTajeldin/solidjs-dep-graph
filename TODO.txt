@@ -1,4 +1,5 @@
 * dagre layout options should be a subset of layout options (under key "dagre")
+* create a sandox for users to play with latest version of dep graph easily. (see https://stackblitz.com/)
 * update TODOs in README file!
 * add script/tool to update version of top/demo/lib package.json files together.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
@@ -17,8 +18,6 @@
    * multi-graph (to show independent state)
 * add support for additional layout algorithms (e.g. ELK, force, etc)
 * make arrow and actual arrow and make current arrow triangle.
-* add graphOptions for top level SVG attributes.
-* allow option for <GraphComp nodes={} edges={}> rather than just class instance.
-* make Node/Edge function constructors to avoid "new Node"...
-* remove setLayoutOptions/setSvgStyle on Graph class.  make them options just like node options.
 * make nodes/edges dynamic (signals) that can be modified by caller. create "dynamic" example
+* allow user to drag nodes around to change to x/y offset?
+* add support for curved edges rather than straight lines.

@@ -1,23 +1,31 @@
 import { Component, createMemo, createSignal, For, JSX, mergeProps, Show } from "solid-js";
 import { NodeC } from "./node";
 import { EdgeC } from "./edge";
-import { dagreLayout, LayoutOptions, DEFAULT_LAYOUT_OPTIONS } from "./dagre-layout";
+import { dagreLayout, DagreLayoutOptionsI } from "./dagre-layout";
 import { borderStyle } from "./styles";
 import { StylePropsT } from "./types";
 
-export type { LayoutOptions };
+interface GraphLayoutOptionsI {
+  layoutAlgo?: string; // FIXME: this should be an enum of available algo types.
+  dagre?: DagreLayoutOptionsI; 
+};
+
+const DEFAULT_GRAPH_LAYOUT_OPTIONS : GraphLayoutOptionsI = {
+  layoutAlgo: "dagre",
+  dagre: {},
+}
 
 interface GraphI {
   nodes: NodeC[],
   edges: EdgeC[],
-  layoutOptions?: LayoutOptions,
+  layoutOptions?: GraphLayoutOptionsI,
   svgStyle?: StylePropsT,
-}
+};
 
 export const Graph: Component<GraphI> = (props) => {
   // TODO: should these be a createMemo functions?
-  const layoutOptions = () => {
-    return Object.assign({}, DEFAULT_LAYOUT_OPTIONS, props.layoutOptions || {});
+  const opts = () => {
+    return Object.assign({}, DEFAULT_GRAPH_LAYOUT_OPTIONS, props.layoutOptions || {});
   }
   const svgStyle = () => props.svgStyle || {};
 
@@ -29,7 +37,7 @@ export const Graph: Component<GraphI> = (props) => {
 
   // perform the actual layout.
   const size = createMemo(() => {
-    return dagreLayout(props.nodes, props.edges, layoutOptions());
+    return dagreLayout(props.nodes, props.edges, opts().dagre);
   });
 
   const handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {

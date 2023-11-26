@@ -9,8 +9,6 @@ hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('xml', xml);
 
 async function fetchCode(example: string): Promise<string> {
-  console.log("fetching code!");
-
   const response = await fetch(`/solidjs-dep-graph/examples/${example}.tsx`);
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -20,7 +18,7 @@ async function fetchCode(example: string): Promise<string> {
 
   const htmlCode = hljs.highlight(rawCode, {
     language: 'typescript',
-    // ignoreIllegals: false,
+    ignoreIllegals: true,
   }).value;
 
   return htmlCode;

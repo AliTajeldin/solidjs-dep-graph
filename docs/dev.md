@@ -5,4 +5,9 @@ pnpm run deploy
 ```
 
 # release new lib version to npm repo
-TBD
+
+update the version in demo/lib package.json to match
+```
+npm login
+pnpm release
+```
