@@ -1,5 +1,5 @@
-import { a as createRenderEffect, s as setAttribute, e as style, t as template, i as insert, c as createComponent, b as className, d as c } from './index-fdf6e1fc.js';
-import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, D as Description, m as markerStyle } from './description-d9a12e5f.js';
+import { a as createRenderEffect, s as setAttribute, e as style, t as template, i as insert, c as createComponent, b as className, d as c } from './index-79b39d63.js';
+import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, D as Description, m as markerStyle } from './description-d2756885.js';
 
 const _tmpl$$1 = /*#__PURE__*/template(`<svg><path></svg>`, false, true);
 
@@ -115,7 +115,7 @@ function CustomExample() {
     const _el$4 = _tmpl$3();
     insert(_el$4, () => graph.render(), null);
     insert(_el$4, createComponent(Description, {
-      example: "resource",
+      example: "custom",
       text: description
     }), null);
     createRenderEffect(() => className(_el$4, c.demoArea));

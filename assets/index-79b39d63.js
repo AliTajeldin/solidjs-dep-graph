@@ -2319,16 +2319,16 @@ const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/sol
 
 const routes = [{
   path: "/",
-  component: lazy(() => __vitePreload(() => import('./basic-ce312b43.js'),true?["assets/basic-ce312b43.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./basic-cfe56fb8.js'),true?["assets/basic-cfe56fb8.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/style",
-  component: lazy(() => __vitePreload(() => import('./style-117a5901.js'),true?["assets/style-117a5901.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./style-bac7aeae.js'),true?["assets/style-bac7aeae.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/custom",
-  component: lazy(() => __vitePreload(() => import('./custom-9c1389f1.js'),true?["assets/custom-9c1389f1.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./custom-d48887e5.js'),true?["assets/custom-d48887e5.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/resource",
-  component: lazy(() => __vitePreload(() => import('./resource-4a02589f.js'),true?["assets/resource-4a02589f.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./resource-044f2834.js'),true?["assets/resource-044f2834.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
 }];
 
 const mainContainer = "_mainContainer_131ca_15";
