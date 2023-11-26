@@ -1,6 +1,6 @@
 import { JSXElement, Show } from "solid-js";
 import { defaultsDeep } from "lodash-es";
-import { StylePropsT  } from "./types";
+import { StylePropsT } from "./types";
 import { Factory } from "./factory";
 import { edgeStyle } from "./styles";
 
@@ -18,7 +18,7 @@ const defaultEdgeOptions: EdgeOptions = {
   markerStyle: {},
 }
 
-export class Edge {
+export class EdgeC {
   readonly id: number
   readonly from: string;
   readonly to: string;
@@ -28,7 +28,7 @@ export class Edge {
   static seq: number = 0;
 
   constructor(from: string, to: string, options: EdgeOptions = {}) {
-    this.id = Edge.seq++;
+    this.id = EdgeC.seq++;
     this.from = from;
     this.to = to;
     this.edgeOptions = defaultsDeep({}, options, defaultEdgeOptions);
@@ -39,7 +39,7 @@ export class Edge {
     const MarkerEnd = Factory.getMarker(this.edgeOptions.markerEnd);
     const markerStartId = `sdg-marker-start-${this.id}`;
     const markerEndId = `sdg-marker-end-${this.id}`;
-  
+
     const move = `M ${this.points[0].x},${this.points[0].y}`;
     const lines = this.points.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
@@ -60,4 +60,8 @@ export class Edge {
       </Show>
     </g>
   }
+}
+
+export const Edge = (from: string, to: string, options: EdgeOptions = {}) => {
+  return new EdgeC(from, to, options);
 }

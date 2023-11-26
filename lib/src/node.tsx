@@ -25,7 +25,7 @@ const defaultNodeOptions: NodeOptions = {
   labelStyle: {},
 }
 
-export class Node {
+export class NodeC {
   readonly id: string;
   readonly label: string;
 
@@ -94,3 +94,14 @@ export class Node {
     </g>
   }
 }
+
+/**
+ * Node factory.  Can be called with explicit label or use id as label.
+ */
+export const Node = (id: string, labelOrOption?: string | NodeOptions, options?: NodeOptions) => {
+  if (typeof labelOrOption === "string") {
+    return new NodeC(id, labelOrOption, options || {});
+  }
+  return new NodeC(id, id, labelOrOption || {});
+}
+
