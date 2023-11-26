@@ -8,4 +8,8 @@ fi
 rm -rf public/examples
 mkdir public/examples
 
-cp src/examples/*.tsx public/examples
+for src in src/examples/*.tsx; do
+  dest="public/examples/$(basename $src)"
+  echo copy "$src" to "$dest"
+  sed '/\/\/--BEGIN$/,/\/\/--END$/!d;//d' "$src" > "$dest"
+done

@@ -1,4 +1,5 @@
 * make label an option for nodes/edges and use id as default label.
+* add link to github code page of full example
 * show code of example in the example itself. (with syntax highlighting).  Note annotate the examples better.
 * add script/tool to update version of top/demo/lib package.json files together.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.

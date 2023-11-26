@@ -47,10 +47,13 @@ export const Code = (props: CodeProps) => {
   const buttonLabel = () => {
     return showCode() ? "Hide Code" : "Show Code";
   }
+  const githubURL = () => `https://github.com/AliTajeldin/solidjs-dep-graph/blob/master/demo/src/examples/${props.example}.tsx`
 
   return (
     <>
       <button class={c.navLink} onClick={() => setShowCode(c=>!c)}>{buttonLabel()}</button>
+      {/* <button class={c.navLink} onClick={() => setShowCode(c=>!c)}><a target="_blank" href="http://www.google.com/">Github &#x29c9;</a>Github &#x29c9;</button> */}
+      <a class={c.navLink} target="_blank" href={githubURL()}>Github &#x29c9;</a>
       <Show when={showCode()}>
         <HtmlCode example={props.example}/>
       </Show>
