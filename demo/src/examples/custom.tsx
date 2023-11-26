@@ -76,7 +76,7 @@ export default function CustomExample() {
   return (
     <div class={c.demoArea} style="flex-grow:1">
       {graph.render()}
-      <Description example="resource" text={description} />
+      <Description example="custom" text={description} />
     </div>
   );
 }
