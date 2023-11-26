@@ -31,7 +31,7 @@ interface CodeProps {
 }
 
 const HtmlCode = (props: CodeProps) => {
-  const [htmlCode] = createResource("basic", fetchCode);
+  const [htmlCode] = createResource(props.example, fetchCode);
 
   return (
     <Show when={htmlCode.state === "ready"} fallback={<p>Loading...</p>}>
