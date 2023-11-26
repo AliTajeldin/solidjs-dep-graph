@@ -95,6 +95,13 @@ export class NodeC {
   }
 }
 
-export const Node = (id: string, label: string, nodeOptions: NodeOptions = {}) => {
-  return new NodeC(id, label, nodeOptions);
+/**
+ * Node factory.  Can be called with explicit label or use id as label.
+ */
+export const Node = (id: string, labelOrOption?: string | NodeOptions, options?: NodeOptions) => {
+  if (typeof labelOrOption === "string") {
+    return new NodeC(id, labelOrOption, options || {});
+  }
+  return new NodeC(id, id, labelOrOption || {});
 }
+

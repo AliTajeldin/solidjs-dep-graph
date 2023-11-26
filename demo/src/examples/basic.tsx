@@ -15,20 +15,16 @@ export default function BasicExample() {
 
   //--BEGIN
   const nodes = [
-    Node("1", "Node 1"),
-    Node("2", "Node 2"),
-    Node("3", "Node 3"),
-    Node("4", "Node 4"),
-    Node("5", "Node 5"),
-    Node("6", "Node 6"),
+    Node("N1"), Node("N2"), Node("N3"),
+    Node("N4"), Node("N5"), Node("N6"),
   ];
 
   const edges = [
-    Edge("1", "2"),
-    Edge("2", "3"),
-    Edge("2", "4"),
-    Edge("1", "5"),
-    Edge("1", "6"),
+    Edge("N1", "N2"),
+    Edge("N2", "N3"),
+    Edge("N2", "N4"),
+    Edge("N1", "N5"),
+    Edge("N1", "N6"),
   ];
 
   return (
