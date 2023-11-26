@@ -23,3 +23,4 @@
 * allow option for <GraphComp nodes={} edges={}> rather than just class instance.
 * make Node/Edge function constructors to avoid "new Node"...
 * remove setLayoutOptions/setSvgStyle on Graph class.  make them options just like node options.
+* make nodes/edges dynamic (signals) that can be modified by caller. create "dynamic" example

@@ -25,7 +25,7 @@ const defaultNodeOptions: NodeOptions = {
   labelStyle: {},
 }
 
-export class Node {
+export class NodeC {
   readonly id: string;
   readonly label: string;
 
@@ -93,4 +93,8 @@ export class Node {
       {this.renderLabel()}
     </g>
   }
+}
+
+export const Node = (id: string, label: string, nodeOptions: NodeOptions = {}) => {
+  return new NodeC(id, label, nodeOptions);
 }

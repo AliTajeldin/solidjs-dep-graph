@@ -1,5 +1,5 @@
 import { graphlib, layout } from "dagre";
-import { Node } from "./node";
+import { NodeC } from "./node";
 import { Edge } from "./edge";
 import { Size } from "./types";
 
@@ -26,7 +26,7 @@ interface InternalLayoutOptions extends LayoutOptions {
 };
 
 export function dagreLayout(
-  nodes: Node[],
+  nodes: NodeC[],
   edges: Edge[],
   userLayoutOptions: LayoutOptions
 ): Size | undefined {
@@ -39,7 +39,7 @@ export function dagreLayout(
   const graph = new graphlib.Graph();
   graph.setGraph(layoutOptions);
 
-  const nodeMap: Record<string, Node> = {};
+  const nodeMap: Record<string, NodeC> = {};
   nodes.forEach((n) => {
     graph.setNode(n.id, n);
     nodeMap[n.id] = n;

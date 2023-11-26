@@ -1,5 +1,5 @@
 import { Component, createMemo, createSignal, For, JSX, mergeProps, Show } from "solid-js";
-import { Node } from "./node";
+import { NodeC } from "./node";
 import { Edge } from "./edge";
 import { dagreLayout, LayoutOptions, DEFAULT_LAYOUT_OPTIONS } from "./dagre-layout";
 import { borderStyle } from "./styles";
@@ -8,7 +8,7 @@ import { StylePropsT } from "./types";
 export type { LayoutOptions };
 
 interface GraphI {
-  nodes: Node[],
+  nodes: NodeC[],
   edges: Edge[],
   layoutOptions?: LayoutOptions,
   svgStyle?: StylePropsT,

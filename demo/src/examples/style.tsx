@@ -11,13 +11,13 @@ export default function StyleExample() {
 
   //--BEGIN
   const nodes = [
-    new Node("1", "Node 1", {
+    Node("1", "Node 1", {
       shape: "circle",
       labelStyle: { stroke: "black" }
     }),
-    new Node("2", "Node 2", { shape: "diamond" }),
-    new Node("3", "Node 3", { shape: "rect" }),
-    new Node("4", "Node 4", {
+    Node("2", "Node 2", { shape: "diamond" }),
+    Node("3", "Node 3", { shape: "rect" }),
+    Node("4", "Node 4", {
       shapeStyle: { fill: "navy" },
       labelStyle: { stroke: "yellow" }
     }),

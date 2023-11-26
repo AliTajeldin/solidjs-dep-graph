@@ -4,7 +4,7 @@ import c from '../style.module.css';
 import { Description } from "../description";
 
 interface GraphInfo {
-  nodes: Node[];
+  nodes: ReturnType<typeof Node>[];
   edges: Edge[];
 }
 
@@ -18,9 +18,9 @@ const description = <>
 //--BEGIN
 async function fetchGraphInfo(): Promise<GraphInfo> {
   const nodes = [
-    new Node("1", "Node 1"),
-    new Node("2", "Node 2"),
-    new Node("3", "Node 3"),
+    Node("1", "Node 1"),
+    Node("2", "Node 2"),
+    Node("3", "Node 3"),
 
   ];
   const edges = [
