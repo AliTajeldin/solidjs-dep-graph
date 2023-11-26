@@ -1,5 +1,5 @@
-import { f as createResource, i as insert, c as createComponent, S as Show, a as createRenderEffect, b as className, d as c, t as template } from './index-79b39d63.js';
-import { D as Description, N as Node, E as Edge, G as Graph } from './description-d2756885.js';
+import { f as createResource, i as insert, c as createComponent, S as Show, a as createRenderEffect, b as className, d as c, t as template } from './index-53476d46.js';
+import { G as Graph, D as Description, N as Node, E as Edge } from './description-fed82c74.js';
 
 const _tmpl$ = /*#__PURE__*/template(`<br>`),
   _tmpl$2 = /*#__PURE__*/template(`<div>`),
@@ -8,26 +8,36 @@ const description = ["An example of graph info being loaded as a resource.", _tm
 
 //--BEGIN
 async function fetchGraphInfo() {
-  const nodes = [new Node("1", "Node 1"), new Node("2", "Node 2"), new Node("3", "Node 3")];
-  const edges = [new Edge("1", "2"), new Edge("1", "3")];
+  const nodes = [Node("1", "Node 1"), Node("2", "Node 2"), Node("3", "Node 3")];
+  const edges = [Edge("1", "2"), Edge("1", "3")];
 
   // simulate a slight delay
   await new Promise(r => setTimeout(r, 1000));
-  return new Graph(nodes, edges);
+  return {
+    nodes,
+    edges
+  };
 }
 function ResourceExample() {
-  const [graph] = createResource(fetchGraphInfo);
+  const [graphInfo] = createResource(fetchGraphInfo);
   return (() => {
     const _el$5 = _tmpl$2();
     insert(_el$5, createComponent(Show, {
       get when() {
-        return graph.state === "ready";
+        return graphInfo.state === "ready";
       },
       get fallback() {
         return _tmpl$3();
       },
       get children() {
-        return graph().render();
+        return createComponent(Graph, {
+          get nodes() {
+            return graphInfo().nodes;
+          },
+          get edges() {
+            return graphInfo().edges;
+          }
+        });
       }
     }), null);
     insert(_el$5, createComponent(Description, {

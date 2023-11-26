@@ -1,4 +1,4 @@
-import { g as createMemo, c as createComponent, h as spread, m as mergeProps, i as insert, F as For, a as createRenderEffect, s as setAttribute, S as Show, t as template, j as createSignal, e as style, k as addEventListener, l as delegateEvents, b as className, d as c, f as createResource } from './index-79b39d63.js';
+import { g as createSignal, h as createMemo, c as createComponent, j as spread, m as mergeProps, i as insert, F as For, a as createRenderEffect, s as setAttribute, S as Show, t as template, e as style, k as delegateEvents, l as addEventListener, b as className, d as c, f as createResource } from './index-53476d46.js';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -13471,9 +13471,7 @@ const markerStyle = {
 };
 const labelStyle = {
   "font-size": "0.75rem",
-  // "font-weight": "lighter",
   "line-height": "1rem",
-  // TODO: is this right!
   "font-weight": 100,
   "stroke": colors.gray15,
   "user-select": "none"
@@ -13483,117 +13481,96 @@ const borderStyle = {
 };
 
 const _tmpl$$a = /*#__PURE__*/template(`<svg><rect class=pointer-target width=100% height=100% style=fill:transparent></rect><g pointer-events=none>`);
-// wrapper around createSignal to use get/set instead of array return.
-function Signal(v) {
-  const [getSig, setSig] = createSignal(v);
-  return {
-    get: getSig,
-    set: setSig
+const Graph = props => {
+  // TODO: should these be a createMemo functions?
+  const layoutOptions = () => {
+    return Object.assign({}, DEFAULT_LAYOUT_OPTIONS, props.layoutOptions || {});
   };
-}
-class Graph {
-  layoutOptions = DEFAULT_LAYOUT_OPTIONS;
-  svgStyle = {};
-  panZoom = Signal({
+  const svgStyle = () => props.svgStyle || {};
+  const [getPanZoom, setPanZom] = createSignal({
     scale: 1,
     xOffset: 0,
     yOffset: 0
   });
-  constructor(nodes, edges) {
-    this.nodes = nodes;
-    this.edges = edges;
-  }
-  setLayoutOptions(layoutOptions) {
-    this.layoutOptions = Object.assign({}, this.layoutOptions, layoutOptions);
-    return this;
-  }
-  setSvgStyle(svgStyle) {
-    this.svgStyle = svgStyle;
-    return this;
-  }
-  render() {
-    const _self$ = this;
-    // perform the actual layout.
-    const size = createMemo(() => {
-      return dagreLayout(this.nodes, this.edges, this.layoutOptions);
+
+  // perform the actual layout.
+  const size = createMemo(() => {
+    return dagreLayout(props.nodes, props.edges, layoutOptions());
+  });
+  const handleWheel = evt => {
+    evt.preventDefault();
+
+    // scale the mouse move event to get reasonable smooth zoom rate
+    const panZoom = getPanZoom();
+    const deltaY = evt.deltaY;
+    const normDeltaY = deltaY > 0 ? 1 - Math.min(deltaY, 200) / 400 : 1 + -deltaY / 300;
+    const newScale = Math.min(10, Math.max(0.25, normDeltaY * panZoom.scale));
+
+    // adjust offset so pointer is in same spot on graph after zoom
+    const offsetScale = -1.0 * newScale / panZoom.scale;
+    const newXOffset = evt.offsetX + offsetScale * (-panZoom.xOffset + evt.offsetX);
+    const newYOffset = evt.offsetY + offsetScale * (-panZoom.yOffset + evt.offsetY);
+    setPanZom({
+      scale: newScale,
+      xOffset: newXOffset,
+      yOffset: newYOffset
     });
-    const handleWheel = evt => {
-      evt.preventDefault();
+  };
+  const handleMouseMove = evt => {
+    // uncomment to show debug msg with location on graph!
+    // showMouseEvent(evt);
 
-      // scale the mouse move event to get reasonable smooth zoom rate
-      const panZoom = this.panZoom.get();
-      const deltaY = evt.deltaY;
-      const normDeltaY = deltaY > 0 ? 1 - Math.min(deltaY, 200) / 400 : 1 + -deltaY / 300;
-      const newScale = Math.min(10, Math.max(0.25, normDeltaY * panZoom.scale));
+    // only do pan when mouse moves while only button 1 is pressed
+    if (evt.buttons != 1) return;
+    setPanZom(panZoom => ({
+      scale: panZoom.scale,
+      xOffset: panZoom.xOffset + evt.movementX,
+      yOffset: panZoom.yOffset + evt.movementY
+    }));
+    evt.preventDefault();
+    evt.stopImmediatePropagation();
+  };
 
-      // adjust offset so pointer is in same spot on graph after zoom
-      const offsetScale = -1.0 * newScale / panZoom.scale;
-      const newXOffset = evt.offsetX + offsetScale * (-panZoom.xOffset + evt.offsetX);
-      const newYOffset = evt.offsetY + offsetScale * (-panZoom.yOffset + evt.offsetY);
-      this.panZoom.set({
-        scale: newScale,
-        xOffset: newXOffset,
-        yOffset: newYOffset
-      });
-    };
-    const handleMouseMove = evt => {
-      // uncomment to show debug msg with location on graph!
-      // showMouseEvent(evt);
-
-      // only do pan when mouse moves while only button 1 is pressed
-      if (evt.buttons != 1) return;
-      const panZoom = this.panZoom.get();
-      this.panZoom.set({
-        scale: panZoom.scale,
-        xOffset: panZoom.xOffset + evt.movementX,
-        yOffset: panZoom.yOffset + evt.movementY
-      });
-      evt.preventDefault();
-      evt.stopImmediatePropagation();
-    };
-
-    // renders the nodes and edges of the graph.
-    // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
-    // without such rect, svg will only get pointer events on painted nodes/edges.
-    const pz = this.panZoom.get;
-    return createComponent(Show, {
-      get when() {
-        return size();
-      },
-      get children() {
-        const _el$ = _tmpl$$a(),
-          _el$2 = _el$.firstChild,
-          _el$3 = _el$2.nextSibling;
-        spread(_el$, mergeProps(size, {
-          "preserveAspectRatio": "none",
-          "pointer-events": "visible",
-          "onMouseMove": handleMouseMove,
-          "onWheel": handleWheel,
-          get style() {
-            return {
-              ...borderStyle,
-              ..._self$.svgStyle
-            };
-          }
-        }), true, true);
-        insert(_el$3, createComponent(For, {
-          get each() {
-            return _self$.nodes;
-          },
-          children: n => n.render()
-        }), null);
-        insert(_el$3, createComponent(For, {
-          get each() {
-            return _self$.edges;
-          },
-          children: e => e.render()
-        }), null);
-        createRenderEffect(() => setAttribute(_el$3, "transform", `matrix(${pz().scale} 0 0 ${pz().scale} ${pz().xOffset} ${pz().yOffset})`));
-        return _el$;
-      }
-    });
-  }
-}
+  // renders the nodes and edges of the graph.
+  // also creates a rectangle same size as parent to accept pointer events (which will propagate to parent svg)
+  // without such rect, svg will only get pointer events on painted nodes/edges.
+  return createComponent(Show, {
+    get when() {
+      return size();
+    },
+    get children() {
+      const _el$ = _tmpl$$a(),
+        _el$2 = _el$.firstChild,
+        _el$3 = _el$2.nextSibling;
+      spread(_el$, mergeProps(size, {
+        "preserveAspectRatio": "none",
+        "pointer-events": "visible",
+        "onMouseMove": handleMouseMove,
+        "onWheel": handleWheel,
+        get style() {
+          return {
+            ...borderStyle,
+            ...svgStyle()
+          };
+        }
+      }), true, true);
+      insert(_el$3, createComponent(For, {
+        get each() {
+          return props.nodes;
+        },
+        children: n => n.render()
+      }), null);
+      insert(_el$3, createComponent(For, {
+        get each() {
+          return props.edges;
+        },
+        children: e => e.render()
+      }), null);
+      createRenderEffect(() => setAttribute(_el$3, "transform", `matrix(${getPanZoom().scale} 0 0 ${getPanZoom().scale} ${getPanZoom().xOffset} ${getPanZoom().yOffset})`));
+      return _el$;
+    }
+  });
+};
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -21368,7 +21345,7 @@ const defaultNodeOptions = {
   shapeStyle: {},
   labelStyle: {}
 };
-class Node {
+class NodeC {
   constructor(id, label, nodeOptions = {}) {
     this.id = id;
     this.label = label;
@@ -21423,6 +21400,16 @@ class Node {
     })();
   }
 }
+
+/**
+ * Node factory.  Can be called with explicit label or use id as label.
+ */
+const Node = (id, labelOrOption, options) => {
+  if (typeof labelOrOption === "string") {
+    return new NodeC(id, labelOrOption, options || {});
+  }
+  return new NodeC(id, id, labelOrOption || {});
+};
 delegateEvents(["dblclick"]);
 
 const _tmpl$$2 = /*#__PURE__*/template(`<svg><defs></svg>`, false, true),
@@ -21433,10 +21420,10 @@ const defaultEdgeOptions = {
   edgeStyle: {},
   markerStyle: {}
 };
-class Edge {
+class EdgeC {
   static seq = 0;
   constructor(from, to, options = {}) {
-    this.id = Edge.seq++;
+    this.id = EdgeC.seq++;
     this.from = from;
     this.to = to;
     this.edgeOptions = defaultsDeep$1({}, options, defaultEdgeOptions);
@@ -21489,6 +21476,9 @@ class Edge {
     })();
   }
 }
+const Edge = (from, to, options = {}) => {
+  return new EdgeC(from, to, options);
+};
 
 /* eslint-disable no-multi-assign */
 

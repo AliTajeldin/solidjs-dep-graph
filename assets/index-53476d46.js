@@ -2319,23 +2319,23 @@ const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/sol
 
 const routes = [{
   path: "/",
-  component: lazy(() => __vitePreload(() => import('./basic-cfe56fb8.js'),true?["assets/basic-cfe56fb8.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./basic-32bf00e5.js'),true?["assets/basic-32bf00e5.js","assets/description-fed82c74.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/style",
-  component: lazy(() => __vitePreload(() => import('./style-bac7aeae.js'),true?["assets/style-bac7aeae.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./style-89b65151.js'),true?["assets/style-89b65151.js","assets/description-fed82c74.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/custom",
-  component: lazy(() => __vitePreload(() => import('./custom-d48887e5.js'),true?["assets/custom-d48887e5.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./custom-812b4571.js'),true?["assets/custom-812b4571.js","assets/description-fed82c74.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/resource",
-  component: lazy(() => __vitePreload(() => import('./resource-044f2834.js'),true?["assets/resource-044f2834.js","assets/description-d2756885.js","assets/description-d8dfd126.css"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./resource-6f4868b2.js'),true?["assets/resource-6f4868b2.js","assets/description-fed82c74.js","assets/description-d8dfd126.css"]:void 0))
 }];
 
-const mainContainer = "_mainContainer_131ca_15";
-const navArea = "_navArea_131ca_23";
-const navLink = "_navLink_131ca_31";
-const demoArea = "_demoArea_131ca_42";
-const demoDescription = "_demoDescription_131ca_52";
+const mainContainer = "_mainContainer_96thg_16";
+const navArea = "_navArea_96thg_24";
+const navLink = "_navLink_96thg_32";
+const demoArea = "_demoArea_96thg_43";
+const demoDescription = "_demoDescription_96thg_53";
 const c = {
 	mainContainer: mainContainer,
 	navArea: navArea,
@@ -2399,4 +2399,4 @@ render(() => createComponent(Router, {
   }
 }), document.getElementById('root'));
 
-export { For as F, Show as S, createRenderEffect as a, className as b, createComponent as c, c as d, style as e, createResource as f, createMemo as g, spread as h, insert as i, createSignal as j, addEventListener as k, delegateEvents as l, mergeProps as m, setAttribute as s, template as t };
+export { For as F, Show as S, createRenderEffect as a, className as b, createComponent as c, c as d, style as e, createResource as f, createSignal as g, createMemo as h, insert as i, spread as j, delegateEvents as k, addEventListener as l, mergeProps as m, setAttribute as s, template as t };

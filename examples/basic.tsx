@@ -1,25 +1,19 @@
   const nodes = [
-    new Node("1", "Node 1"),
-    new Node("2", "Node 2"),
-    new Node("3", "Node 3"),
-    new Node("4", "Node 4"),
-    new Node("5", "Node 5"),
-    new Node("6", "Node 6"),
+    Node("N1"), Node("N2"), Node("N3"),
+    Node("N4"), Node("N5"), Node("N6"),
   ];
 
   const edges = [
-    new Edge("1", "2",),
-    new Edge("2", "3",),
-    new Edge("2", "4"),
-    new Edge("1", "5"),
-    new Edge("1", "6",),
+    Edge("N1", "N2"),
+    Edge("N2", "N3"),
+    Edge("N2", "N4"),
+    Edge("N1", "N5"),
+    Edge("N1", "N6"),
   ];
-  
-  const graph = new Graph(nodes, edges);
-  
+
   return (
     <div class={c.demoArea}>
-      {graph.render()}
+      <Graph nodes={nodes} edges={edges} />
       <Description example="basic" text={description} />
     </div>
   );

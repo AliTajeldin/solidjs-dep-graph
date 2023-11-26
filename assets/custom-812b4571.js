@@ -1,5 +1,5 @@
-import { a as createRenderEffect, s as setAttribute, e as style, t as template, i as insert, c as createComponent, b as className, d as c } from './index-79b39d63.js';
-import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, D as Description, m as markerStyle } from './description-d2756885.js';
+import { a as createRenderEffect, s as setAttribute, e as style, t as template, i as insert, c as createComponent, b as className, d as c } from './index-53476d46.js';
+import { s as shapeStyle, S as Shapes, F as Factory, N as Node, E as Edge, G as Graph, D as Description, m as markerStyle, c as colors } from './description-fed82c74.js';
 
 const _tmpl$$1 = /*#__PURE__*/template(`<svg><path></svg>`, false, true);
 
@@ -78,42 +78,46 @@ function CustomExample() {
   const cb = n => {
     console.log("Double click:", n.id);
   };
-  const nodes = [new Node("1", "", {
+  const nodes = [Node("1", "", {
     shape: "image",
     imageUrl: "/solidjs-dep-graph/linux.png",
     height: 30,
     width: 30,
     dblClickCB: cb
-  }), new Node("2", "Node 2", {
+  }), Node("2", "Node 2", {
     shape: "house",
     shapeStyle: {
       fill: colors.blue2
     }
-  }), new Node("3", "Node 3", {
+  }), Node("3", "Node 3", {
     dblClickCB: cb
-  }), new Node("4", "Node 4", {
+  }), Node("4", "Node 4", {
     width: 100,
     height: 50,
     shape: "house"
   })];
-  const edges = [new Edge("1", "2", {
+  const edges = [Edge("1", "2", {
     markerEnd: "circle"
-  }), new Edge("2", "3", {
+  }), Edge("2", "3", {
     markerStart: "circle",
     markerEnd: "big-rev-arrow",
     markerStyle: {
       stroke: "yellow",
       fill: "green"
     }
-  }), new Edge("2", "4")];
-  const graph = new Graph(nodes, edges).setLayoutOptions({
-    rankdir: "TB"
-  }).setSvgStyle({
-    height: "100%"
-  });
+  }), Edge("2", "4")];
   return (() => {
     const _el$4 = _tmpl$3();
-    insert(_el$4, () => graph.render(), null);
+    insert(_el$4, createComponent(Graph, {
+      nodes: nodes,
+      edges: edges,
+      layoutOptions: {
+        rankdir: "TB"
+      },
+      svgStyle: {
+        height: "100%"
+      }
+    }), null);
     insert(_el$4, createComponent(Description, {
       example: "custom",
       text: description
