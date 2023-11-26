@@ -10,7 +10,7 @@ export interface NodeOptions {
   width?: number;
   height?: number;
   imageUrl?: string;
-  dblClickCB?: (n: Node, e: MouseEvent) => void;
+  dblClickCB?: (n: NodeC, e: MouseEvent) => void;
   shapeStyle?: StylePropsT;
   labelStyle?: StylePropsT;
 };
