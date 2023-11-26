@@ -2319,23 +2319,23 @@ const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/sol
 
 const routes = [{
   path: "/",
-  component: lazy(() => __vitePreload(() => import('./basic-94d4a8d5.js'),true?["assets/basic-94d4a8d5.js","assets/edge-3de3cc88.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./basic-ce312b43.js'),true?["assets/basic-ce312b43.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/style",
-  component: lazy(() => __vitePreload(() => import('./style-214b1513.js'),true?["assets/style-214b1513.js","assets/edge-3de3cc88.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./style-117a5901.js'),true?["assets/style-117a5901.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/custom",
-  component: lazy(() => __vitePreload(() => import('./custom-5a0f9723.js'),true?["assets/custom-5a0f9723.js","assets/edge-3de3cc88.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./custom-9c1389f1.js'),true?["assets/custom-9c1389f1.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
 }, {
   path: "/resource",
-  component: lazy(() => __vitePreload(() => import('./resource-be381fb1.js'),true?["assets/resource-be381fb1.js","assets/edge-3de3cc88.js"]:void 0))
+  component: lazy(() => __vitePreload(() => import('./resource-4a02589f.js'),true?["assets/resource-4a02589f.js","assets/description-d9a12e5f.js","assets/description-d8dfd126.css"]:void 0))
 }];
 
-const mainContainer = "_mainContainer_iwxps_15";
-const navArea = "_navArea_iwxps_23";
-const navLink = "_navLink_iwxps_31";
-const demoArea = "_demoArea_iwxps_42";
-const demoDescription = "_demoDescription_iwxps_51";
+const mainContainer = "_mainContainer_131ca_15";
+const navArea = "_navArea_131ca_23";
+const navLink = "_navLink_131ca_31";
+const demoArea = "_demoArea_131ca_42";
+const demoDescription = "_demoDescription_131ca_52";
 const c = {
 	mainContainer: mainContainer,
 	navArea: navArea,
@@ -2399,4 +2399,4 @@ render(() => createComponent(Router, {
   }
 }), document.getElementById('root'));
 
-export { For as F, Show as S, c as a, className as b, createRenderEffect as c, style as d, createResource as e, createComponent as f, createMemo as g, spread as h, insert as i, createSignal as j, addEventListener as k, delegateEvents as l, mergeProps as m, setAttribute as s, template as t };
+export { For as F, Show as S, createRenderEffect as a, className as b, createComponent as c, c as d, style as e, createResource as f, createMemo as g, spread as h, insert as i, createSignal as j, addEventListener as k, delegateEvents as l, mergeProps as m, setAttribute as s, template as t };

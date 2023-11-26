@@ -1,5 +1,5 @@
-import { c as createRenderEffect, s as setAttribute, d as style, t as template, i as insert, a as c, b as className } from './index-36a0bc71.js';
-import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, m as markerStyle } from './edge-3de3cc88.js';
+import { a as createRenderEffect, s as setAttribute, e as style, t as template, i as insert, c as createComponent, b as className, d as c } from './index-fdf6e1fc.js';
+import { s as shapeStyle, S as Shapes, F as Factory, N as Node, c as colors, E as Edge, G as Graph, D as Description, m as markerStyle } from './description-d9a12e5f.js';
 
 const _tmpl$$1 = /*#__PURE__*/template(`<svg><path></svg>`, false, true);
 
@@ -36,9 +36,12 @@ class PathShape {
   }
 }
 
-const _tmpl$ = /*#__PURE__*/template(`<svg><marker viewBox="0 0 10 10"refX=9 refY=5 markerUnits=strokeWidth markerWidth=7 markerHeight=7 orient=auto-start-reverse><path d="M 10 0 L 10 10 L 0 5 z"></svg>`, false, true),
-  _tmpl$2 = /*#__PURE__*/template(`<div style=margin:25px;flex-grow:1><div>This example demonstrates various ways graph can be customized.<ul><li>Custom shapes and markers can be used by simply registering them with the <code>Factory</code></li><li>User styles can still be applied over custom shapes/markers</li><li>Nodes 1 and 3 also have a double click callback attached to them</li><li>the node width/height can be explicitly specified to change size of node</li><li><code>svgStyle</code> can be set on graph to affect style of entire graph (e.g. expand to fill screen as shown here)`);
+const _tmpl$ = /*#__PURE__*/template(`<ul><li>Custom shapes and markers can be used by simply registering them with the <code>Factory</code></li><li>User styles can still be applied over custom shapes/markers</li><li>Nodes 1 and 3 also have a double click callback attached to them</li><li>the node width/height can be explicitly specified to change size of node</li><li><code>svgStyle</code> can be set on graph to affect style of entire graph (e.g. expand to fill screen as shown here)`),
+  _tmpl$2 = /*#__PURE__*/template(`<svg><marker viewBox="0 0 10 10"refX=9 refY=5 markerUnits=strokeWidth markerWidth=7 markerHeight=7 orient=auto-start-reverse><path d="M 10 0 L 10 10 L 0 5 z"></svg>`, false, true),
+  _tmpl$3 = /*#__PURE__*/template(`<div style=flex-grow:1>`);
+const description = ["This example demonstrates various ways graph can be customized.", _tmpl$()];
 
+//--BEGIN
 /**
  * For custom path shapes, we only need to implement the `path` method.
  */
@@ -51,22 +54,22 @@ class HouseShape extends PathShape {
 }
 function BigRevArrowMarker(props) {
   return (() => {
-    const _el$ = _tmpl$(),
-      _el$2 = _el$.firstChild;
+    const _el$2 = _tmpl$2(),
+      _el$3 = _el$2.firstChild;
     createRenderEffect(_p$ => {
       const _v$ = props.id,
         _v$2 = {
           ...markerStyle,
           ...props.markerStyle
         };
-      _v$ !== _p$._v$ && setAttribute(_el$, "id", _p$._v$ = _v$);
-      _p$._v$2 = style(_el$2, _v$2, _p$._v$2);
+      _v$ !== _p$._v$ && setAttribute(_el$2, "id", _p$._v$ = _v$);
+      _p$._v$2 = style(_el$3, _v$2, _p$._v$2);
       return _p$;
     }, {
       _v$: undefined,
       _v$2: undefined
     });
-    return _el$;
+    return _el$2;
   })();
 }
 function CustomExample() {
@@ -109,21 +112,16 @@ function CustomExample() {
     height: "100%"
   });
   return (() => {
-    const _el$3 = _tmpl$2(),
-      _el$4 = _el$3.firstChild;
-    insert(_el$3, () => graph.render(), _el$4);
-    createRenderEffect(_p$ => {
-      const _v$3 = c.demoArea,
-        _v$4 = c.demoDescription;
-      _v$3 !== _p$._v$3 && className(_el$3, _p$._v$3 = _v$3);
-      _v$4 !== _p$._v$4 && className(_el$4, _p$._v$4 = _v$4);
-      return _p$;
-    }, {
-      _v$3: undefined,
-      _v$4: undefined
-    });
-    return _el$3;
+    const _el$4 = _tmpl$3();
+    insert(_el$4, () => graph.render(), null);
+    insert(_el$4, createComponent(Description, {
+      example: "resource",
+      text: description
+    }), null);
+    createRenderEffect(() => className(_el$4, c.demoArea));
+    return _el$4;
   })();
 }
+//--END
 
 export { BigRevArrowMarker, CustomExample as default };
