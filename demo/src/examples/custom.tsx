@@ -59,6 +59,7 @@ export default function CustomExample() {
     Node("3", "Node 3", { dblClickCB: cb }),
     Node("4", "Node 4", { width: 100, height: 50, shape: "house" }),
   ];
+  
   const edges = [
     Edge("1", "2", { markerEnd: "circle", }),
     Edge("2", "3", {

@@ -5,7 +5,7 @@ import { Description } from "../description";
 
 interface GraphInfo {
   nodes: ReturnType<typeof Node>[];
-  edges: Edge[];
+  edges: ReturnType<typeof Edge>[];
 }
 
 const description = <>
