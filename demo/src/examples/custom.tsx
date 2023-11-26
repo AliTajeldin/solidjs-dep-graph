@@ -69,14 +69,13 @@ export default function CustomExample() {
     new Edge("2", "4"),
   ];
 
-  const graph = new Graph(nodes, edges)
-    .setLayoutOptions({ rankdir: "TB" })
-    .setSvgStyle({ height: "100%" });
-
   return (
     <div class={c.demoArea} style="flex-grow:1">
-      {graph.render()}
-      <Description example="resource" text={description} />
+      <Graph nodes={nodes} edges={edges}
+        layoutOptions={{ rankdir: "TB" }}
+        svgStyle={{ height: "100%" }} />
+
+      <Description example="custom" text={description} />
     </div>
   );
 }

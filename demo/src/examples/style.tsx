@@ -22,7 +22,7 @@ export default function StyleExample() {
       labelStyle: { stroke: "yellow" }
     }),
   ];
-  
+
   const edges = [
     new Edge("1", "2", { markerEnd: "circle" }),
     new Edge("2", "3", {
@@ -32,11 +32,9 @@ export default function StyleExample() {
     new Edge("2", "4", { markerEnd: "none" }),
   ];
 
-  const graph = new Graph(nodes, edges);
-
   return (
     <div class={c.demoArea}>
-      {graph.render()}
+      <Graph nodes={nodes} edges={edges} />
       <Description example="style" text={description} />
     </div>
   );

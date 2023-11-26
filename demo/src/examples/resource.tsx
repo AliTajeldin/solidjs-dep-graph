@@ -3,7 +3,6 @@ import { Node, Edge, Graph } from "solidjs-dep-graph";
 import c from '../style.module.css';
 import { Description } from "../description";
 
-
 interface GraphInfo {
   nodes: Node[];
   edges: Edge[];
@@ -16,9 +15,8 @@ const description = <>
   <br />
 </>
 
-
 //--BEGIN
-async function fetchGraphInfo(): Promise<Graph> {
+async function fetchGraphInfo(): Promise<GraphInfo> {
   const nodes = [
     new Node("1", "Node 1"),
     new Node("2", "Node 2"),
@@ -32,16 +30,17 @@ async function fetchGraphInfo(): Promise<Graph> {
 
   // simulate a slight delay
   await new Promise(r => setTimeout(r, 1000));
-  return new Graph(nodes, edges);
+
+  return {nodes, edges}
 }
 
 export default function ResourceExample() {
-  const [graph] = createResource(fetchGraphInfo);
+  const [graphInfo] = createResource(fetchGraphInfo);
 
   return (
     <div class={c.demoArea}>
-      <Show when={graph.state === "ready"} fallback={<p>Loading...</p>}>
-        {graph().render()}
+      <Show when={graphInfo.state === "ready"} fallback={<p>Loading...</p>}>
+        <Graph nodes={graphInfo().nodes} edges={graphInfo().edges}/>
       </Show>
       <Description example="resource" text={description} />
     </div>

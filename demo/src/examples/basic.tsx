@@ -30,12 +30,10 @@ export default function BasicExample() {
     new Edge("1", "5"),
     new Edge("1", "6",),
   ];
-  
-  const graph = new Graph(nodes, edges);
-  
+
   return (
     <div class={c.demoArea}>
-      {graph.render()}
+      <Graph nodes={nodes} edges={edges} />
       <Description example="basic" text={description} />
     </div>
   );
