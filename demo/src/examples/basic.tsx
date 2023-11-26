@@ -24,11 +24,11 @@ export default function BasicExample() {
   ];
 
   const edges = [
-    new Edge("1", "2",),
-    new Edge("2", "3",),
-    new Edge("2", "4"),
-    new Edge("1", "5"),
-    new Edge("1", "6",),
+    Edge("1", "2"),
+    Edge("2", "3"),
+    Edge("2", "4"),
+    Edge("1", "5"),
+    Edge("1", "6"),
   ];
 
   return (

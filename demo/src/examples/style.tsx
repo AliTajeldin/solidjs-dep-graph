@@ -24,12 +24,12 @@ export default function StyleExample() {
   ];
 
   const edges = [
-    new Edge("1", "2", { markerEnd: "circle" }),
-    new Edge("2", "3", {
+    Edge("1", "2", { markerEnd: "circle" }),
+    Edge("2", "3", {
       edgeStyle: { stroke: "red" },
       markerStyle: { stroke: "yellow", fill: "green" }
     }),
-    new Edge("2", "4", { markerEnd: "none" }),
+    Edge("2", "4", { markerEnd: "none" }),
   ];
 
   return (

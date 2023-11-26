@@ -24,8 +24,8 @@ async function fetchGraphInfo(): Promise<GraphInfo> {
 
   ];
   const edges = [
-    new Edge("1", "2",),
-    new Edge("1", "3",),
+    Edge("1", "2"),
+    Edge("1", "3"),
   ];
 
   // simulate a slight delay

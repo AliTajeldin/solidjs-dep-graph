@@ -60,13 +60,13 @@ export default function CustomExample() {
     Node("4", "Node 4", { width: 100, height: 50, shape: "house" }),
   ];
   const edges = [
-    new Edge("1", "2", { markerEnd: "circle", }),
-    new Edge("2", "3", {
+    Edge("1", "2", { markerEnd: "circle", }),
+    Edge("2", "3", {
       markerStart: "circle",
       markerEnd: "big-rev-arrow",
       markerStyle: { stroke: "yellow", fill: "green" }
     }),
-    new Edge("2", "4"),
+    Edge("2", "4"),
   ];
 
   return (

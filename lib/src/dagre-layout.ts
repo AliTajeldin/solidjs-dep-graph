@@ -1,6 +1,6 @@
 import { graphlib, layout } from "dagre";
 import { NodeC } from "./node";
-import { Edge } from "./edge";
+import { EdgeC } from "./edge";
 import { Size } from "./types";
 
 export interface LayoutOptions {
@@ -27,7 +27,7 @@ interface InternalLayoutOptions extends LayoutOptions {
 
 export function dagreLayout(
   nodes: NodeC[],
-  edges: Edge[],
+  edges: EdgeC[],
   userLayoutOptions: LayoutOptions
 ): Size | undefined {
 
