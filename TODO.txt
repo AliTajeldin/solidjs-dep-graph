@@ -1,6 +1,5 @@
-* dagre layout options should be a subset of layout options (under key "dagre")
 * create a sandox for users to play with latest version of dep graph easily. (see https://stackblitz.com/)
-* update TODOs in README file!
+* update basic example in README to match current basic example.
 * add script/tool to update version of top/demo/lib package.json files together.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.
 * remove TBD from readme and add blurp about example directory instead.

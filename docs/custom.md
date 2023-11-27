@@ -20,7 +20,7 @@ Factory.registerShape("myhouse", new HouseShape());
 
 Once registered, the custom class can be utilized in the same manner as any built-in shape:
 ```typescript
- new Node("id", "node", { shape: "myhouse" })
+ Node("id", "node", { shape: "myhouse" })
 ```
 
 If the custom shape is defined by path element, then the `PathShape` class can be extended to provide the required `render` and `shapeInfo` methods and the user only has to provide a `path` method.  See example below.
@@ -69,7 +69,7 @@ Factory.registerMarker("mymarker", MyMarker);
 ```
 Once registered, the custom marker can be utilized in the same manner as any built-in marker:
 ```typescript
-new Edge("N1", "N2", {markerEnd: "mymarker"});
+Edge("N1", "N2", {markerEnd: "mymarker"});
 ```
 
 ## Example Custom Marker
