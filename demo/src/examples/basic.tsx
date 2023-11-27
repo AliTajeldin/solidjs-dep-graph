@@ -1,5 +1,4 @@
 import { Node, Edge, Graph } from "solidjs-dep-graph";
-import { Code } from '../code';
 import { Description } from "../description";
 import c from '../style.module.css';
 
