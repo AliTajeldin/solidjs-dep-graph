@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "esModuleInterop": true,
     "target": "ESNext",
     "module": "ESNext",

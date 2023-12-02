@@ -4,8 +4,7 @@ import type { MarkerProps, MarkerComponent } from "./marker-types";
 
 export { MarkerProps, MarkerComponent }
 
-export const BUILTIN_MARKERS: Record<string, MarkerComponent> = {
+export const BUILTIN_MARKERS = {
   "arrow": ArrowMarker,
   "circle": CircleMarker,
-  "none": null,
-};
+} as const;

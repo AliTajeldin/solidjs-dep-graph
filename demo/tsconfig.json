@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "strict": true,
     "esModuleInterop": true,
     "target": "ESNext",
     "module": "ESNext",
@@ -14,5 +15,5 @@
       "solidjs-dep-graph": ["../lib/src/index.tsx"],
     }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "public"]
 }

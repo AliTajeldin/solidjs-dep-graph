@@ -3,6 +3,7 @@ import { defaultsDeep } from "lodash-es";
 import { StylePropsT } from "./types";
 import { Factory } from "./factory";
 import { edgeStyle } from "./styles";
+import { Dynamic } from "solid-js/web";
 
 export interface EdgeOptions {
   markerStart?: string,
@@ -35,27 +36,29 @@ export class EdgeC {
   }
 
   render(): JSXElement {
-    const MarkerStart = Factory.getMarker(this.edgeOptions.markerStart);
-    const MarkerEnd = Factory.getMarker(this.edgeOptions.markerEnd);
+    const MarkerStart = Factory.getMarker(this.edgeOptions.markerStart || "none");
+    const MarkerEnd = Factory.getMarker(this.edgeOptions.markerEnd || "none");
     const markerStartId = `sdg-marker-start-${this.id}`;
     const markerEndId = `sdg-marker-end-${this.id}`;
 
-    const move = `M ${this.points[0].x},${this.points[0].y}`;
-    const lines = this.points.slice(1).
+    // this is filled in by layout algo.
+    const pts = this.points!;
+    const move = `M ${pts[0].x},${pts[0].y}`;
+    const lines = pts.slice(1).
       map((p) => `L ${p.x},${p.y}`).join(' ');
     return <g style={{
       ...edgeStyle,
       ...this.edgeOptions.edgeStyle,
     }}>
       <path d={`${move} ${lines}`} marker-start={`url(#${markerStartId}`} marker-end={`url(#${markerEndId}`} />
-      <Show when={MarkerStart !== null}>
+      <Show when={MarkerStart}>
         <defs>
-          <MarkerStart id={markerStartId} markerStyle={this.edgeOptions.markerStyle} />
+          <Dynamic component={MarkerStart} id={markerStartId} markerStyle={this.edgeOptions.markerStyle || {}} />
         </defs>
       </Show>
-      <Show when={MarkerEnd !== null}>
+      <Show when={MarkerEnd}>
         <defs>
-          <MarkerEnd id={markerEndId} markerStyle={this.edgeOptions.markerStyle} />
+          <Dynamic component={MarkerStart} id={markerEndId} markerStyle={this.edgeOptions.markerStyle || {}} />
         </defs>
       </Show>
     </g>

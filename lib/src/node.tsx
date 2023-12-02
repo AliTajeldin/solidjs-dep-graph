@@ -49,8 +49,8 @@ export class NodeC {
   }
 
   renderShape() {
-    const shape = Factory.getShape(this.nodeOptions.shape);
-    return shape.render(this.width, this.height, this.nodeOptions.shapeStyle, this.nodeOptions);
+    const shape = Factory.getShape(this.nodeOptions.shape!);
+    return shape.render(this.width, this.height, this.nodeOptions.shapeStyle!, this.nodeOptions);
   }
 
   renderLabel() {
@@ -73,7 +73,7 @@ export class NodeC {
   // point and return point are both in graph coordinates.
   // while shapeInfo and intersects are using shape coordinates (origin 0,0)
   intersect(point: Point): Point {
-    const shape = Factory.getShape(this.nodeOptions.shape);
+    const shape = Factory.getShape(this.nodeOptions.shape || "rect");
     const nodeShape = shape.shapeInfo(this.width, this.height);
     const lineShape = Shapes.line(point.x - this.x, point.y - this.y, 0, 0);
 

@@ -9,4 +9,6 @@ export const BUILTIN_SHAPES = {
   "circle": new CircleShape(),
   "diamond": new DiamondShape(),
   "image": new ImageShape(),
-};
+} as const;
+
+export const DEFUALT_SHAPE = BUILTIN_SHAPES["rect"];

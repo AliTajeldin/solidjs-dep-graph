@@ -1,4 +1,5 @@
 * create a sandox for users to play with latest version of dep graph easily. (see https://stackblitz.com/)
+* fix location of types files (index.d.ts) in lib/package.json??
 * update basic example in README to match current basic example.
 * add script/tool to update version of top/demo/lib package.json files together.
 * add styling image example to top README (similar to custom shapes section) and remove TBD.

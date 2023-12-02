@@ -37,7 +37,7 @@ export const Graph: Component<GraphI> = (props) => {
 
   // perform the actual layout.
   const size = createMemo(() => {
-    return dagreLayout(props.nodes, props.edges, opts().dagre);
+    return dagreLayout(props.nodes, props.edges, opts().dagre!);
   });
 
   const handleWheel: JSX.EventHandler<SVGElement, WheelEvent> = (evt) => {

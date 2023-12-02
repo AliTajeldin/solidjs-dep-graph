@@ -50,16 +50,17 @@ export function dagreLayout(
 
   // adjust edges so first/last points move to intersection point with the to/from node.
   edges.forEach((e) => {
+    const points = e.points!;
     const fromNode = nodeMap[e.from];
     const toNode = nodeMap[e.to];
-    const lastIdx = e.points.length - 1;
+    const lastIdx = points.length - 1;
     if (lastIdx < 2) {
       throw new Error(`too few edge points to go on Edge(${e.from},${e.to})`)
     }
 
-    e.points[0] = fromNode.intersect(e.points[1]);
-    e.points[lastIdx] = toNode.intersect(e.points[lastIdx - 1]);
+    points[0] = fromNode.intersect(points[1]);
+    points[lastIdx] = toNode.intersect(points[lastIdx - 1]);
   });
 
-  return new Size(layoutOptions.width, layoutOptions.height);
+  return new Size(layoutOptions.width!, layoutOptions.height!);
 }
